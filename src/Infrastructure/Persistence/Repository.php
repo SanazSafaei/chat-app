@@ -61,8 +61,7 @@ abstract class Repository
         }
         $query = rtrim($query, ",") . ' )';
 
-        $logger->log('error', $query);
-        $this->PDO->query($query)->execute();
+        $this->PDO->query($query);
     }
 
     /**
