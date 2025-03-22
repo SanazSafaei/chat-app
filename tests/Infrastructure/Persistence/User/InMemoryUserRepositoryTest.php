@@ -13,7 +13,6 @@ use Tests\TestCase;
 
 class InMemoryUserRepositoryTest extends TestCase
 {
-
     public function tearDown(): void
     {
         (new FakeDB())->deleteDB();

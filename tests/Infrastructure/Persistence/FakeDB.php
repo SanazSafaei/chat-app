@@ -13,7 +13,7 @@ class FakeDB implements DBInterface
     public function __construct()
     {
         $this->path = __DIR__ . '/fake_db.sqlite';
-        $this->connection = new PDO('sqlite:/'.$this->path);
+        $this->connection = new PDO('sqlite:/' . $this->path);
     }
 
     public function getConnection(): PDO
