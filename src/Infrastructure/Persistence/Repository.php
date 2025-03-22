@@ -2,19 +2,19 @@
 
 namespace App\Infrastructure\Persistence;
 
-use App\Domain\DomainObject;
+use App\Domain\Objects\DomainObject;
 
 abstract class Repository
 {
     protected \PDO $PDO;
 
-    public function __construct()
+    public function __construct(?DBInterface $DB = null)
     {
-        $this->PDO = (new DB())->getConnection();
+        $this->PDO = ($this->getDB($DB))->getConnection();
     }
 
-    public abstract function getTableName(): string;
-    public abstract function getFields(): array;
+    abstract public function getTableName(): string;
+    abstract public function getFields(): array;
 
     public function getCreateTableSchema(): string
     {
@@ -22,17 +22,17 @@ abstract class Repository
         $fields = $this->getFields();
         $tableDefinition = '(';
         foreach ($fields as $fieldName => $fieldType) {
-            $tableDefinition = $tableDefinition . ' '. $fieldName . ' ' . $fieldType . ',';
+            $tableDefinition = $tableDefinition . ' ' . $fieldName . ' ' . $fieldType . ',';
         }
         $tableDefinition = rtrim($tableDefinition, ",") . ' )';
 
-        return 'CREATE TABLE IF NOT EXISTS ' . $this->getTableName() . ' '. $tableDefinition;
+        return 'CREATE TABLE IF NOT EXISTS ' . $this->getTableName() . ' ' . $tableDefinition;
     }
 
     public function createTable(): void
     {
         $logger = new \Slim\Logger();
-        $logger->log('info', $this->getCreateTableSchema());
+//        $logger->log('info', $this->getCreateTableSchema());
         $this->PDO->query(
             $this->getCreateTableSchema()
         )->execute();
@@ -41,14 +41,13 @@ abstract class Repository
     public function insert(DomainObject $domain): void
     {
         //$this->myPDO->query('INSERT INTO users (id, username, first_name, last_name, photo, last_seen, created_at, updated_at) VALUES (2, "bill.gates", "Bill", "Gates", "test/photo", DateTime(), DateTime(), DateTime())')->execute();
-        $logger = new \Slim\Logger();
 
-        $query = 'INSERT INTO '. $this->getTableName() . ' (';
+        $query = 'INSERT INTO ' . $this->getTableName() . ' (';
         foreach ($this->getFields() as $fieldName => $fieldType) {
             if ($this->shouldIgnoreField($fieldName, $fieldType)) {
                 continue;
             }
-            $query = $query .' '. $fieldName . ',';
+            $query = $query . ' ' . $fieldName . ',';
         }
         $query = rtrim($query, ",") . ' )';
 
@@ -76,4 +75,8 @@ abstract class Repository
         return $fieldName == 'id' && $fieldType == 'INTEGER PRIMARY KEY AUTOINCREMENT';
     }
 
+    private function getDB(?DBInterface $DB = null): DBInterface
+    {
+        return $DB ?: new DB();
+    }
 }
