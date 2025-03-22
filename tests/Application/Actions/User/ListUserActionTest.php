@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Tests\Application\Actions\User;
 
 use App\Application\Actions\ActionPayload;
-use App\Domain\User\UserRepository;
-use App\Domain\User\User;
+use App\Domain\Objects\User\User;
+use App\Domain\Objects\User\UserRepository;
+use DateTime;
 use DI\Container;
 use Tests\TestCase;
 
@@ -19,7 +20,8 @@ class ListUserActionTest extends TestCase
         /** @var Container $container */
         $container = $app->getContainer();
 
-        $user = new User(1, 'bill.gates', 'Bill', 'Gates');
+        $now = new DateTime();
+        $user = new User(1, 'bill.gates', "12345", 'Bill', 'Gates','bill@gate.com', "test/photo", $now, $now, $now);
 
         $userRepositoryProphecy = $this->prophesize(UserRepository::class);
         $userRepositoryProphecy
