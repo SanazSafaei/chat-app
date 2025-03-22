@@ -7,26 +7,46 @@ namespace App\Infrastructure\Persistence\User;
 use App\Domain\User\User;
 use App\Domain\User\UserNotFoundException;
 use App\Domain\User\UserRepository;
+use App\Infrastructure\Persistence\Repository;
+use DateTime;
 
-class InMemoryUserRepository implements UserRepository
+class InMemoryUserRepository extends Repository implements UserRepository
 {
-    /**
-     * @var User[]
-     */
-    private array $users;
-
     /**
      * @param User[]|null $users
      */
-    public function __construct(array $users = null)
+    public function __construct(?array $users = null)
     {
-        $this->users = $users ?? [
-            1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
-            2 => new User(2, 'steve.jobs', 'Steve', 'Jobs'),
-            3 => new User(3, 'mark.zuckerberg', 'Mark', 'Zuckerberg'),
-            4 => new User(4, 'evan.spiegel', 'Evan', 'Spiegel'),
-            5 => new User(5, 'jack.dorsey', 'Jack', 'Dorsey'),
+        parent::__construct();
+
+        $logger = new \Slim\Logger();
+        $logger->log('info', __DIR__);
+
+        $this->createTable();
+        $now = new DateTime();
+        $user = new User(2, "bill.gates", "Bill", "Gates", "test/photo", $now, $now, $now);
+        $this->insert($user);
+
+//        $this->myPDO->query('INSERT INTO users (id, username, first_name, last_name, photo, last_seen, created_at, updated_at) VALUES (2, "bill.gates", "Bill", "Gates", "test/photo", DateTime(), DateTime(), DateTime())')->execute();
+    }
+
+    public function getFields(): array
+    {
+        return [
+            'id' => 'INTEGER PRIMARY KEY AUTOINCREMENT',
+            'username' => 'TEXT',
+            'first_name' => 'TEXT',
+            'last_name' => 'TEXT',
+            'photo' => 'TEXT',
+            'last_seen' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime'
         ];
+    }
+
+    public function getTableName(): string
+    {
+        return 'users';
     }
 
     /**
@@ -34,7 +54,12 @@ class InMemoryUserRepository implements UserRepository
      */
     public function findAll(): array
     {
-        return array_values($this->users);
+        $result= $this->PDO->query('SELECT * FROM users');
+        $dtoArray = [];
+        foreach ($result->fetchAll() as $row) {
+            $dtoArray[] = User::jsonDeserialize($row);
+        }
+        return $dtoArray;
     }
 
     /**
@@ -42,10 +67,12 @@ class InMemoryUserRepository implements UserRepository
      */
     public function findUserOfId(int $id): User
     {
-        if (!isset($this->users[$id])) {
+        $result= $this->PDO->query("SELECT * FROM users WHERE id = {$id}");
+        if (!isset($result)) {
             throw new UserNotFoundException();
         }
 
-        return $this->users[$id];
+        return User::jsonDeserialize($result->fetch());
     }
+
 }
