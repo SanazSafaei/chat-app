@@ -3,13 +3,17 @@
 namespace App\Infrastructure\Persistence;
 
 use App\Domain\Objects\DomainObject;
+use Exception;
+use Slim\Logger;
 
 abstract class Repository
 {
     protected \PDO $PDO;
+    private Logger $logger;
 
     public function __construct(?DBInterface $DB = null)
     {
+        $this->logger = new Logger();
         $this->PDO = ($this->getDB($DB))->getConnection();
     }
 
@@ -31,14 +35,12 @@ abstract class Repository
 
     public function createTable(): void
     {
-        $logger = new \Slim\Logger();
-//        $logger->log('info', $this->getCreateTableSchema());
         $this->PDO->query(
             $this->getCreateTableSchema()
-        )->execute();
+        );
     }
 
-    public function insert(DomainObject $domain): void
+    public function insert(DomainObject $domain): DomainObject
     {
         //$this->myPDO->query('INSERT INTO users (id, username, first_name, last_name, photo, last_seen, created_at, updated_at) VALUES (2, "bill.gates", "Bill", "Gates", "test/photo", DateTime(), DateTime(), DateTime())')->execute();
 
@@ -61,7 +63,15 @@ abstract class Repository
         }
         $query = rtrim($query, ",") . ' )';
 
-        $this->PDO->query($query);
+        $result = $this->PDO->prepare($query);
+        $execResult = $result->execute();
+        if (!$execResult) {
+            $error = $this->PDO->errorInfo();
+            $this->logger->log('info', "Error: (".$error[0].':'.$error[1].') '.$error[2]);
+            throw new Exception('DB is not available');
+        }
+        $domain->setId($this->PDO->lastInsertId());
+        return $domain;
     }
 
     /**

@@ -4,6 +4,12 @@ namespace App\Domain\Objects;
 
 abstract class DomainObject
 {
+    protected ?int $id;
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
     abstract public function jsonSerialize(): array;
     abstract public static function jsonDeserialize($values): DomainObject;
 }

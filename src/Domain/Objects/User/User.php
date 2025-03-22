@@ -10,8 +10,6 @@ use JsonSerializable;
 
 class User extends DomainObject implements JsonSerializable
 {
-    private ?int $id;
-
     private string $username;
 
     private string $firstName;
