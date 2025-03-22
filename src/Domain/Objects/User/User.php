@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Domain\Objects\User;
 
-use App\Domain\DomainObject;
+use App\Domain\Objects\DomainObject;
 use DateTime;
 use JsonSerializable;
 
@@ -21,22 +21,27 @@ class User extends DomainObject implements JsonSerializable
     private DateTime $lastSeen;
     private DateTime $createdAt;
     private DateTime $updatedAt;
+    private string $password;
+    private string $email;
 
     public function __construct(
         ?int $id,
         string $username,
+        string $password,
         string $firstName,
         string $lastName,
+        string $email,
         string $photo,
         ?DateTime $lastSeen,
         ?DateTime $createdAt,
         ?DateTime $updatedAt
-    )
-    {
+    ) {
         $this->id = $id;
         $this->username = strtolower($username);
+        $this->password = $password;
         $this->firstName = ucfirst($firstName);
         $this->lastName = ucfirst($lastName);
+        $this->email = $email;
         $this->photo = $photo;
         $this->lastSeen = $lastSeen;
         $this->createdAt = $createdAt;
@@ -51,6 +56,11 @@ class User extends DomainObject implements JsonSerializable
     public function getUsername(): string
     {
         return $this->username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
     public function getFirstName(): string
@@ -89,8 +99,10 @@ class User extends DomainObject implements JsonSerializable
         return [
             'id' => $this->id,
             'username' => $this->username,
+            'password' => $this->password,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
+            'email' => $this->email,
             'photo' => $this->photo,
             'last_seen' => $this->lastSeen->format('Y-m-d H:i:s'),
             'created_at' => $this->createdAt->format('Y-m-d H:i:s'),
@@ -101,15 +113,17 @@ class User extends DomainObject implements JsonSerializable
     public static function jsonDeserialize($values): User
     {
         return (new User(
-                $values['id'],
-                $values['username'],
-                $values['first_name'],
-                $values['last_name'],
-                $values['photo'],
-                (new DateTime($values['last_seen'])),
-                (new DateTime($values['created_at'])),
-                (new DateTime($values['updated_at'])),
-            )
+            $values['id'],
+            $values['username'],
+            $values['password'],
+            $values['first_name'],
+            $values['last_name'],
+            $values['email'],
+            $values['photo'],
+            (new DateTime($values['last_seen'])),
+            (new DateTime($values['created_at'])),
+            (new DateTime($values['updated_at'])),
+        )
         );
     }
 }
