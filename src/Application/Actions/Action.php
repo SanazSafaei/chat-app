@@ -43,6 +43,11 @@ abstract class Action
         }
     }
 
+    protected function getUserId(): ?int
+    {
+        return $this->request->getAttribute('user_id');
+    }
+
     /**
      * @throws DomainRecordNotFoundException
      * @throws HttpBadRequestException
@@ -84,6 +89,10 @@ abstract class Action
     {
         $json = json_encode($payload, JSON_PRETTY_PRINT);
         $this->response->getBody()->write($json);
+
+        if ($this->request->hasHeader('Authorization')) {
+            $this->response->withHeader('Authorization', $this->request->getHeader('Authorization'));
+        }
 
         return $this->response
                     ->withHeader('Content-Type', 'application/json')
