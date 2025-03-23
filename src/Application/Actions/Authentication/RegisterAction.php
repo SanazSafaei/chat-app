@@ -12,14 +12,12 @@ class RegisterAction extends Action
     protected function action(): Response
     {
         $data = $this->getFormData();
-        $user = (new CreateUser($data))->execute();
+        list($user, $token) = (new CreateUser($data))->execute();
         $baseUri = $_SERVER['HTTP_HOST'];
-        $logger = new \Slim\Logger();
-        $logger->log('info', 'USER ID : ' . $user->getId());
-        $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
         return $this->response
             ->withHeader('Location', 'http://' . $baseUri . '/users/' . $user->getId())
             ->withHeader('Authorization', 'Bearer '.$token)
+            ->withHeader('set-cookie', 'token='.$token. '; HttpOnly; Path=/')
             ->withStatus(302);
     }
 }

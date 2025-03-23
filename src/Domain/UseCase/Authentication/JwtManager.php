@@ -45,7 +45,7 @@ class JwtManager
     public static function getPayload(int $userId, string $username): array
     {
         return [
-            'user_id' => $userId,
+            'userId' => $userId,
             'username' => $username,
             'host' => $_SERVER['HTTP_HOST'],
             'expires' => time() + self::getTtl()

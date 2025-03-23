@@ -3,6 +3,7 @@
 namespace App\Domain\UseCase\User;
 
 use App\Domain\Objects\User\User;
+use App\Domain\UseCase\Authentication\JwtManager;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
 use DateTime;
 use Webmozart\Assert\Assert;
@@ -14,18 +15,18 @@ class CreateUser
     public function __construct(array $userData)
     {
         $this->userData = $userData;
+        $this->validateData();
     }
 
-    public function execute(): User
+    public function execute(): array
     {
         $now = new DateTime();
 
-        $this->validateData();
-
+        //username should be unique!
         $user = new User(
             null,
             $this->userData['username'],
-            $this->userData['password'],
+            password_hash($this->userData['password'], PASSWORD_BCRYPT),
             $this->userData['first_name'] ?? '',
             $this->userData['last_name'] ?? '',
             $this->userData['email'],
@@ -34,8 +35,9 @@ class CreateUser
             $now,
             $now
         );
-
-        return (new InMemoryUserRepository())->insert($user);
+        $user = (new InMemoryUserRepository())->insert($user);
+        $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
+        return array($user, $token);
     }
 
     private function validateData(): void
