@@ -47,7 +47,7 @@ class JwtManager
         return [
             'userId' => $userId,
             'username' => $username,
-            'host' => $_SERVER['HTTP_HOST'],
+            'host' => $_SERVER['HTTP_HOST'] ?? '',
             'expires' => time() + self::getTtl()
         ];
     }

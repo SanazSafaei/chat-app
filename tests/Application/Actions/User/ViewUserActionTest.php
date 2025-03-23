@@ -10,8 +10,11 @@ use App\Application\Handlers\HttpErrorHandler;
 use App\Domain\Objects\User\User;
 use App\Domain\Objects\User\UserNotFoundException;
 use App\Domain\Objects\User\UserRepository;
+use App\Domain\UseCase\Authentication\JwtManager;
+use Cassandra\Exception\UnauthorizedException;
 use DateTime;
 use DI\Container;
+use Slim\Exception\HttpUnauthorizedException;
 use Slim\Middleware\ErrorMiddleware;
 use Tests\TestCase;
 
@@ -34,12 +37,14 @@ class ViewUserActionTest extends TestCase
             ->shouldBeCalledOnce();
 
         $container->set(UserRepository::class, $userRepositoryProphecy->reveal());
-
-        $request = $this->createRequest('GET', '/users/1');
+        $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
+        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer '.$token);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
-        $expectedPayload = new ActionPayload(200, $user);
+        $data = $user->jsonSerialize();
+        unset($data['password']);
+        $expectedPayload = new ActionPayload(200, $data);
         $serializedPayload = json_encode($expectedPayload, JSON_PRETTY_PRINT);
 
         $this->assertEquals($serializedPayload, $payload);
@@ -61,6 +66,10 @@ class ViewUserActionTest extends TestCase
         /** @var Container $container */
         $container = $app->getContainer();
 
+//        $request = $this->createRequest('GET', '/users/1');
+        $token = JwtManager::encode(JwtManager::getPayload(1, 'sanazz'));
+        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer '.$token);
+
         $userRepositoryProphecy = $this->prophesize(UserRepository::class);
         $userRepositoryProphecy
             ->findUserOfId(1)
@@ -69,7 +78,6 @@ class ViewUserActionTest extends TestCase
 
         $container->set(UserRepository::class, $userRepositoryProphecy->reveal());
 
-        $request = $this->createRequest('GET', '/users/1');
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
