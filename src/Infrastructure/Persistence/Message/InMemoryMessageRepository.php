@@ -19,12 +19,11 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
     public function getFields(): array
     {
-        $messageTypes = implode(',', array_map(fn($type) => "'{$type}'", MessageRepository::MESSAGE_TYPE));
         return [
             'id' => 'INTEGER PRIMARY KEY AUTOINCREMENT',
-            '`from`' => 'INT',
-            '`to`' => 'INT',
-            'type' => "TEXT CHECK(type IN ($messageTypes))",
+            'from_id' => 'INT',
+            'to_id' => 'INT',
+            'type' => "TEXT",
             'message' => 'TEXT',
             'media' => 'TEXT',
             'created_at' => 'datetime'
@@ -54,7 +53,7 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
      */
     public function findMessagesFromToId(int $to, int $from, ?string $type = null): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE (`from` = {$from} and `to` = {$to}) OR (`from` = {$to} and `to` = {$from}) AND type = '{$type}'");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE (from_id = {$from} and to_id = {$to}) OR (from_id = {$to} and to_id = {$from}) AND type = '{$type}'");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);
@@ -65,7 +64,7 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
     public function findMessagesToGroupId(int $to): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE 'to' = {$to} and type = 'group'");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE 'to_id' = {$to} and type = 'group'");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);

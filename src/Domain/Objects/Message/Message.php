@@ -69,12 +69,12 @@ class Message extends DomainObject implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            'from' => $this->from,
-            'to' => $this->to,
-            'messageType' => $this->messageType,
+            'from_id' => $this->from,
+            'to_id' => $this->to,
+            'type' => $this->messageType,
             'message' => $this->message,
             'media' => $this->media,
-            'createdAt' => $this->createdAt?->format(DateTime::ATOM),
+            'created_at' => $this->createdAt?->format(DateTime::ATOM),
         ];
     }
 
@@ -82,9 +82,9 @@ class Message extends DomainObject implements JsonSerializable
     {
         return new self(
             $values['id'] ?? null,
-            $values['from'],
-            $values['to'],
-            $values['messageType'],
+            $values['from_id'],
+            $values['to_id'],
+            $values['type'],
             $values['message'],
             $values['media'],
             isset($values['createdAt']) ? new DateTime($values['createdAt']) : null
