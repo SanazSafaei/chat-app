@@ -54,6 +54,8 @@ class CreateUser
             "Username Must: \n start with letter \n 6-32 characters \n Letters and numbers only"
         );
 
+        $isUsernameTaken = (new InMemoryUserRepository())->findUserOfUsername($this->userData['username']);
+        Assert::null($isUsernameTaken, 'Username is already taken.');
         /** Password
          * Must have more than 8 characters
          * Has at least one lowercase, uppercase letter and number, and symbol
