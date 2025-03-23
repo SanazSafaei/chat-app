@@ -45,7 +45,7 @@ abstract class Action
 
     protected function getUserId(): ?int
     {
-        return $this->request->getAttribute('user_id');
+        return ($this->request->getAttribute('token'))->userId ?? null;
     }
 
     /**
