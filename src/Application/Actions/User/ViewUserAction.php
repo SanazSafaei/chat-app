@@ -16,7 +16,7 @@ class ViewUserAction extends UserAction
     {
         $userId = (int) $this->resolveArg('id');
 
-        if ($this->getUserId()) {
+        if (!$this->getUserId()) {
             throw new HttpUnauthorizedException($this->request);
         }
 
