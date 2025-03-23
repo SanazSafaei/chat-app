@@ -31,16 +31,16 @@ class Settings implements SettingsInterface
         $configDir = __DIR__ . '/../config';
         $dirs[] = $configDir;
 
-        if($mode) {
+        if ($mode) {
             $dirs[] = $configDir . '/' . $mode;
         }
         $config = [];
 
         foreach ($dirs as $dir) {
             if (is_dir($dir)) {
-                $scanned_directory = array_diff(scandir($dir), array('..', '.'));
+                $scanned_directory = array_diff(scandir($dir), ['..', '.']);
                 foreach ($scanned_directory as $file) {
-                    $yml = file_get_contents($dir.'/'.$file);
+                    $yml = file_get_contents($dir . '/' . $file);
                     $ymlContent = self::extractYml($yml);
                     Assert::notNull($yml, 'Please check ' . $file);
                     $key = explode('.', $file)[0];
