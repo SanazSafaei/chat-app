@@ -10,6 +10,11 @@ abstract class DomainObject
     {
         $this->id = $id;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     abstract public function jsonSerialize(): array;
     abstract public static function jsonDeserialize($values): DomainObject;
 }

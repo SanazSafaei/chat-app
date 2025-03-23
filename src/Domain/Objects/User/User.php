@@ -46,11 +46,6 @@ class User extends DomainObject implements JsonSerializable
         $this->updatedAt = $updatedAt;
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getUsername(): string
     {
         return $this->username;

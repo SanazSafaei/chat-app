@@ -11,7 +11,6 @@ use stdClass;
 class JwtManager
 {
     const string HS256_ALGO = 'HS256';
-    private mixed $key;
 
     private static function getPrivateKey(): string
     {
