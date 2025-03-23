@@ -33,6 +33,7 @@ class Message extends DomainObject implements JsonSerializable
         $this->message = $message;
         $this->media = $media;
         $this->createdAt = $createdAt;
+        $this->validateInput();
     }
 
     public function getFrom(): int
@@ -89,5 +90,12 @@ class Message extends DomainObject implements JsonSerializable
             $values['media'],
             isset($values['createdAt']) ? new DateTime($values['createdAt']) : null
         );
+    }
+
+    public function validateInput(): void
+    {
+        if (!in_array($this->messageType, MessageRepository::MESSAGE_TYPE)) {
+            throw new Exception('Invalid type value. Allowed values are: private_message, group_message');
+        }
     }
 }
