@@ -17,8 +17,22 @@ class AuthenticationMiddleware implements Middleware
         if ($request->hasHeader('Authorization')) {
             $token = $request->getHeader('Authorization');
             $token = explode(' ', $token[0]);
-            if($token[0] === 'Bearer') {
+            if ($token[0] === 'Bearer') {
                 $jwt = $token[1];
+                try {
+                    $decoded = JwtManager::decode($jwt);
+                    $request = $request->withAttribute('token', $decoded);
+                } catch (Exception $e) {
+                    $response = (new Response(401));
+                    $response->getBody()->write('Unauthorized');
+                    return $response;
+                }
+            }
+        } elseif ($request->hasHeader('Cookie')) {
+            $cookieParams = $request->getCookieParams();
+            if (isset($cookieParams['token'])) {
+                $token = $cookieParams['token'];
+                $jwt = $token;
                 try {
                     $decoded = JwtManager::decode($jwt);
                     $request = $request->withAttribute('token', $decoded);
