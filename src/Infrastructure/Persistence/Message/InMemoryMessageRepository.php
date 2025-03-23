@@ -6,13 +6,8 @@ namespace App\Infrastructure\Persistence\Message;
 
 use App\Domain\Objects\Message\Message;
 use App\Domain\Objects\Message\MessageRepository;
-use App\Domain\Objects\User\User;
-use App\Domain\Objects\User\UserNotFoundException;
-use App\Domain\Objects\User\UserRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
-use http\Encoding\Stream\Inflate;
-use Psr\Http\Message\MessageInterface;
 
 class InMemoryMessageRepository extends Repository implements MessageRepository
 {
@@ -24,12 +19,12 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
     public function getFields(): array
     {
-        $messageType = implode(',', self::MESSAGE_TYPE);
+        $messageTypes = implode(',', array_map(fn($type) => "'{$type}'", MessageRepository::MESSAGE_TYPE));
         return [
             'id' => 'INTEGER PRIMARY KEY AUTOINCREMENT',
-            'from' => 'INT',
-            'to' => 'INT',
-            'type' => "TEXT CHECK( pType IN $messageType)",
+            '`from`' => 'INT',
+            '`to`' => 'INT',
+            'type' => "TEXT CHECK(type IN ($messageTypes))",
             'message' => 'TEXT',
             'media' => 'TEXT',
             'created_at' => 'datetime'
@@ -59,7 +54,7 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
      */
     public function findMessagesFromToId(int $to, int $from, ?string $type = null): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE ('from' = {$from} and 'to' = {$to}) OR ('from' = {$to} and 'to' = {$from}) AND type = '{$type}'");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE (`from` = {$from} and `to` = {$to}) OR (`from` = {$to} and `to` = {$from}) AND type = '{$type}'");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);
