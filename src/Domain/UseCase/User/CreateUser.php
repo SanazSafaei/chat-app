@@ -37,7 +37,7 @@ class CreateUser
         );
         $user = (new InMemoryUserRepository())->insert($user);
         $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
-        return array($user, $token);
+        return [$user, $token];
     }
 
     private function validateData(): void

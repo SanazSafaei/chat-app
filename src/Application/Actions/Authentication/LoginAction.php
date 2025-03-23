@@ -19,8 +19,8 @@ class LoginAction extends Action
         $baseUri = $_SERVER['HTTP_HOST'];
         return $this->response
             ->withHeader('Location', 'http://' . $baseUri . '/users/' . $user->getId())
-            ->withHeader('Authorization', 'Bearer '.$token)
-            ->withHeader('set-cookie', 'token='.$token. '; HttpOnly; Path=/')
+            ->withHeader('Authorization', 'Bearer ' . $token)
+            ->withHeader('set-cookie', 'token=' . $token . '; HttpOnly; Path=/')
             ->withStatus(302);
     }
 }

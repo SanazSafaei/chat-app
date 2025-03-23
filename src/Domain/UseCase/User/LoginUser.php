@@ -25,7 +25,7 @@ class LoginUser
         }
         (new InMemoryUserRepository())->updateField('last_seen', (new \DateTime())->format('Y-m-d H:i:s'), $user->getId());
         $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
-        return array($user, $token);
+        return [$user, $token];
     }
 
     private function validateData(): void
@@ -33,5 +33,4 @@ class LoginUser
         Assert::keyExists($this->userData, 'username', 'Username is mandatory.');
         Assert::keyExists($this->userData, 'password', 'Password is mandatory.');
     }
-
 }
