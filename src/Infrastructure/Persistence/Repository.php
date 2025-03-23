@@ -35,9 +35,7 @@ abstract class Repository
 
     public function createTable(): void
     {
-        $this->PDO->query(
-            $this->getCreateTableSchema()
-        );
+        $this->PDO->query($this->getCreateTableSchema());
     }
 
     public function insert(DomainObject $domain): DomainObject
