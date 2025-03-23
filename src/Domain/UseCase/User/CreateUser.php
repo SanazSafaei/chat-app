@@ -3,6 +3,7 @@
 namespace App\Domain\UseCase\User;
 
 use App\Domain\Objects\User\User;
+use App\Domain\Objects\User\UserNotFoundException;
 use App\Domain\UseCase\Authentication\JwtManager;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
 use DateTime;
@@ -54,8 +55,7 @@ class CreateUser
             "Username Must: \n start with letter \n 6-32 characters \n Letters and numbers only"
         );
 
-        $isUsernameTaken = (new InMemoryUserRepository())->findUserOfUsername($this->userData['username']);
-        Assert::null($isUsernameTaken, 'Username is already taken.');
+        Assert::null($this->isUsernameTaken(), 'Username is already taken.');
         /** Password
          * Must have more than 8 characters
          * Has at least one lowercase, uppercase letter and number, and symbol
@@ -69,5 +69,15 @@ class CreateUser
 
         Assert::keyExists($this->userData, 'email', 'Email is mandatory.');
         Assert::email($this->userData['email'], 'Email is not valid.');
+    }
+
+    public function isUsernameTaken(): ?User
+    {
+        try {
+            $isUsernameTaken = (new InMemoryUserRepository())->findUserOfUsername($this->userData['username']);
+        } catch (UserNotFoundException $e) {
+            $isUsernameTaken = null;
+        }
+        return $isUsernameTaken;
     }
 }
