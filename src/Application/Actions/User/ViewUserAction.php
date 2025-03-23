@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Actions\User;
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Exception\HttpUnauthorizedException;
 
 class ViewUserAction extends UserAction
 {
@@ -16,7 +17,7 @@ class ViewUserAction extends UserAction
         $userId = (int) $this->resolveArg('id');
 
         if ($this->getUserId() != $userId) {
-            return $this->respondWithData(['error' => 'Unauthorized'], 401);
+            throw new HttpUnauthorizedException($this->request);
         }
 
         $user = $this->userRepository->findUserOfId($userId);

@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface as Middleware;
 use Psr\Http\Server\RequestHandlerInterface;
+use Slim\Exception\HttpUnauthorizedException;
 use Slim\Psr7\Response;
 
 class AuthenticationMiddleware implements Middleware
@@ -37,9 +38,7 @@ class AuthenticationMiddleware implements Middleware
                     $decoded = JwtManager::decode($jwt);
                     $request = $request->withAttribute('token', $decoded);
                 } catch (Exception $e) {
-                    $response = (new Response(401));
-                    $response->getBody()->write('Unauthorized');
-                    return $response;
+                    throw new HttpUnauthorizedException($request);
                 }
             }
         }
