@@ -20,9 +20,10 @@ class ViewUserAction extends UserAction
         }
 
         $user = $this->userRepository->findUserOfId($userId);
-
+        $userData = $user->jsonSerialize();
+        unset($userData['password']);
         $this->logger->info("User of id `{$userId}` was viewed.");
 
-        return $this->respondWithData($user->jsonSerialize());
+        return $this->respondWithData($userData);
     }
 }
