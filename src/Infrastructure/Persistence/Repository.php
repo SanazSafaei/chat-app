@@ -74,6 +74,18 @@ abstract class Repository
         return $domain;
     }
 
+    public function updateField($field, $value, $id): void
+    {
+        $query = "UPDATE users SET {$field} = :value WHERE id = :id";
+        $stmt = $this->PDO->prepare($query);
+        $stmt->bindParam(':value', $value);
+        $stmt->bindParam(':id', $id);
+        $result = $stmt->execute();
+        if (!$result) {
+            throw new Exception('DB is not available');
+        }
+    }
+
     /**
      * @param int|string $fieldName
      * @param mixed $fieldType
