@@ -9,7 +9,6 @@ use App\Domain\Objects\User\UserNotFoundException;
 use App\Domain\Objects\User\UserRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
-use DateTime;
 
 class InMemoryUserRepository extends Repository implements UserRepository
 {
@@ -66,4 +65,19 @@ class InMemoryUserRepository extends Repository implements UserRepository
 
         return User::jsonDeserialize($result);
     }
+
+    public function findUserOfUsername(string $username): User
+    {
+        $stmt = $this->PDO->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        if (!isset($result) || !$result) {
+            throw new UserNotFoundException();
+        }
+
+        return User::jsonDeserialize($result);
+    }
+
 }

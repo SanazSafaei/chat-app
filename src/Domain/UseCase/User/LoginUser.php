@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Domain\UseCase\User;
+
+use App\Domain\UseCase\Authentication\JwtManager;
+use App\Infrastructure\Persistence\User\InMemoryUserRepository;
+use Webmozart\Assert\Assert;
+
+class LoginUser
+{
+    private array $userData;
+
+    public function __construct(array $userData)
+    {
+        $this->userData = $userData;
+        $this->validateData();
+    }
+
+    public function execute(): array
+    {
+        $user = (new InMemoryUserRepository())->findUserOfUsername($this->userData['username']);
+        $isVerified = password_verify($this->userData['password'], $user->getPassword());
+        if (!$isVerified) {
+            throw new \Exception('Invalid credentials.');
+        }
+        (new InMemoryUserRepository())->updateField('last_seen', (new \DateTime())->format('Y-m-d H:i:s'), $user->getId());
+        $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
+        return array($user, $token);
+    }
+
+    private function validateData(): void
+    {
+        Assert::keyExists($this->userData, 'username', 'Username is mandatory.');
+        Assert::keyExists($this->userData, 'password', 'Password is mandatory.');
+    }
+
+}
