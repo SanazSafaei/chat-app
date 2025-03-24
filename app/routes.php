@@ -8,6 +8,7 @@ use App\Application\Actions\Authentication\RegisterAction;
 use App\Application\Actions\Group\CreateGroupAction;
 use App\Application\Actions\Group\ListGroupsAction;
 use App\Application\Actions\Group\ViewGroupAction;
+use App\Application\Actions\Group\ViewGroupMembersAction;
 use App\Application\Actions\Message\SendGroupMessageAction;
 use App\Application\Actions\Message\SendPrivateMessageAction;
 use App\Application\Actions\Message\ViewChatAction;
@@ -47,6 +48,7 @@ return function (App $app) {
         $group->get('', ListGroupsAction::class); // List of all groups
         $group->post('', CreateGroupAction::class); // create group
         $group->get('/{id}', ViewGroupAction::class); // view group details
+        $group->get('/{id}/members', ViewGroupMembersAction::class); // view group members
         $group->get('/{id}/messages', ViewGroupMessagesAction::class); // view groups messages
         $group->post('/{id}/messages', SendGroupMessageAction::class); // send message to group
     });
