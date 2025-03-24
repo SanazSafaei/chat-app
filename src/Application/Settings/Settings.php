@@ -41,6 +41,7 @@ class Settings implements SettingsInterface
         $logger->log('info', "settings ===> ");
         foreach ($dirs as $dir) {
             $logger->log('info', "dir ===> ".$dir);
+            $logger->log('info', "is_dir ===> ".is_dir($dir));
             if (is_dir($dir)) {
                 $scanned_directory = array_diff(scandir($dir), ['..', '.']);
                 foreach ($scanned_directory as $file) {
