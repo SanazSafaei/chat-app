@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP Composer Running Tests
 
 on:
   push:
@@ -32,8 +32,9 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+    - name: Setup config.yml
+      run: |
+        cp config/config.yml ./src/Application/Config/config.yml
 
     - name: Run test suite
       run: composer test
