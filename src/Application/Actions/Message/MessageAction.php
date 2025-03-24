@@ -16,5 +16,6 @@ abstract class MessageAction extends Action
     {
         parent::__construct($logger);
         $this->messageRepository = $messageRepository;
+        $this->validateUserIsLoggedIn();
     }
 }

@@ -12,10 +12,6 @@ class ViewChatAction extends MessageAction
         $guest = (int) $this->resolveArg('id');
         $owner = $this->getUserId();
 
-        if (!$owner) {
-            throw new HttpUnauthorizedException($this->request);
-        }
-
         $messagesListData = $this->messageRepository->findMessagesFromToId(
             $guest,
             $owner,

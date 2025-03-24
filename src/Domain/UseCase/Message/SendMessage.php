@@ -28,7 +28,7 @@ class SendMessage
             null,
             $this->messageData['from'],
             $this->messageData['to'],
-            MessageRepository::TYPE_PRIVATE,
+            $this->messageData['type'],
             $this->messageData['message'] ?? '',
             $this->messageData['media'] ?? '',
             $now
@@ -45,5 +45,8 @@ class SendMessage
         if(!isset($this->messageData['message']) && !isset($this->messageData['media'])) {
             throw new Exception('Message or Media should contain at least one value.');
         }
+        Assert::keyExists($this->messageData, 'type', 'Type field is mandatory.');
+        Assert::inArray($this->messageData['type'], MessageRepository::MESSAGE_TYPES,
+            'Message Type field can only be '. implode(', ', MessageRepository::MESSAGE_TYPES));
     }
 }

@@ -12,10 +12,6 @@ class SendPrivateMessageAction extends MessageAction
     {
         $owner = $this->getUserId();
 
-        if (!$owner) {
-            throw new HttpUnauthorizedException($this->request);
-        }
-
         $data = $this->getFormData();
         $data['from'] = $owner;
         $data['to'] = (int) $this->resolveArg('id');

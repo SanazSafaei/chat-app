@@ -16,10 +16,6 @@ class ViewUserAction extends UserAction
     {
         $userId = (int) $this->resolveArg('id');
 
-        if (!$this->getUserId()) {
-            throw new HttpUnauthorizedException($this->request);
-        }
-
         $user = $this->userRepository->findUserOfId($userId);
         $userData = $user->jsonSerialize();
         unset($userData['password']);

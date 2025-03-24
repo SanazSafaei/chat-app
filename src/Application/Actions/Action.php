@@ -10,6 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Exception\HttpUnauthorizedException;
 
 abstract class Action
 {
@@ -97,5 +98,12 @@ abstract class Action
         return $this->response
                     ->withHeader('Content-Type', 'application/json')
                     ->withStatus($payload->getStatusCode());
+    }
+
+    protected function validateUserIsLoggedIn(): void
+    {
+        if (!$this->getUserId()) {
+            throw new HttpUnauthorizedException($this->request);
+        }
     }
 }
