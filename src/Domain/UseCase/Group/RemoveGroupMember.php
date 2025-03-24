@@ -20,15 +20,7 @@ class RemoveGroupMember
 
     public function execute(): void
     {
-        $groupMember = new GroupMember(
-            null,
-            $this->memberData['user_id'],
-            $this->memberData['group_id'],
-            $this->memberData['role']
-        );
-
-        /** @var GroupMember $groupMember */
-        $this->groupMemberRepository->deleteByUserIdAndGroupId($groupMember->getUserId(), $groupMember->getGroupId());
+        $this->groupMemberRepository->deleteByUserIdAndGroupId($this->memberData['user_id'], $this->memberData['group_id']);
     }
 
     private function validateData(): void
@@ -38,7 +30,8 @@ class RemoveGroupMember
         Assert::keyExists($this->memberData, 'user_id', 'User ID is required.');
         Assert::integer($this->memberData['user_id'], 'User ID must be an integer.');
 
-        $groupMember = $this->groupMemberRepository->getByUserIdAndGroupId($this->memberData['user_id'], $this->memberData['group_id']);
+        Assert::keyExists($this->memberData, 'requested_by', 'Requested User ID is required.');
+        $groupMember = $this->groupMemberRepository->getByUserIdAndGroupId($this->memberData['requested_by'], $this->memberData['group_id']);
         Assert::eq($groupMember->getRole(), GroupMemberRepository::ROLE_ADMIN, 'Only admin can remove group members.');
     }
 }

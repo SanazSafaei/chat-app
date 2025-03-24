@@ -21,6 +21,7 @@ class RemoveGroupMembersAction extends GroupAction
 
         $data = $this->getFormData();
         $data['group_id'] = $groupId;
+        $data['requested_by'] = $this->getUserId();
 
         (new removeGroupMember($data, $this->groupMemberRepository))->execute();
 
