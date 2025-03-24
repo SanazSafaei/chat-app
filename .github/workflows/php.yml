@@ -11,30 +11,31 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:19.03.12
+        options: --privileged
+        ports:
+          - 8080:80
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - name: Set up Docker Compose
+      run: |
+        docker-compose up -d
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+    - name: Validate composer.json and composer.lock
+      run: docker-compose exec app composer validate --strict
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: docker-compose exec app composer install --prefer-dist --no-progress
 
     - name: Setup config.yml
       run: |
-        cp src/Application/Config/auth-secret.yml ./src/Application/Config/config.yml
+        docker-compose exec app cp src/Application/Config/auth-secret.yml src/Application/Config/config.yml
 
     - name: Run test suite
-      run: composer test
+      run: docker-compose exec app composer test
