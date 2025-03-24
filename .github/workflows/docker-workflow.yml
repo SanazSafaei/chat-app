@@ -22,5 +22,4 @@ jobs:
         run: docker-compose up -d
 
       - name: Run Composer Tests
-        run: docker-compose exec chat-app composer test
-        shell: /usr/bin/bash -e {0}
+        run: docker compose exec slim ./vendor/phpunit/phpunit/phpunit --configuration ./phpunit.xml --teamcity
