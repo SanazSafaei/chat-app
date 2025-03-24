@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Objects\Group;
 
 use App\Domain\Objects\DomainObject;
-use App\Domain\Objects\Message\MessageRepository;
-use DateTime;
+use App\Domain\Objects\User\User;
 use Exception;
 use JsonSerializable;
 class GroupMember extends DomainObject implements JsonSerializable
@@ -15,6 +14,7 @@ class GroupMember extends DomainObject implements JsonSerializable
     private int $userId;
     private int $groupId;
     private string $role;
+    private User $user;
 
     public function __construct(
         ?int $id,
@@ -44,11 +44,22 @@ class GroupMember extends DomainObject implements JsonSerializable
         return $this->role;
     }
 
+    public function setUserData(User $data): void
+    {
+        $this->user = $data;
+    }
+
+    public function getUserData(): User
+    {
+        return $this->user;
+    }
+
     public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
             'user_id' => $this->userId,
+            'user' => $this->user ?? '',
             'group_id' => $this->groupId,
             'role' => $this->role,
         ];

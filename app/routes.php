@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Application\Actions\Authentication\LoginAction;
 use App\Application\Actions\Authentication\LogoutAction;
 use App\Application\Actions\Authentication\RegisterAction;
+use App\Application\Actions\Group\AddGroupMembersAction;
 use App\Application\Actions\Group\CreateGroupAction;
 use App\Application\Actions\Group\ListGroupsAction;
 use App\Application\Actions\Group\ViewGroupAction;
@@ -49,6 +50,7 @@ return function (App $app) {
         $group->post('', CreateGroupAction::class); // create group
         $group->get('/{id}', ViewGroupAction::class); // view group details
         $group->get('/{id}/members', ViewGroupMembersAction::class); // view group members
+        $group->post('/{id}/members', AddGroupMembersAction::class); // add group members
         $group->get('/{id}/messages', ViewGroupMessagesAction::class); // view groups messages
         $group->post('/{id}/messages', SendGroupMessageAction::class); // send message to group
     });

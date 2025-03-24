@@ -2,6 +2,8 @@
 
 namespace App\Domain\Objects\Group;
 
+use App\Domain\Objects\DomainObject;
+
 interface GroupMemberRepository
 {
     public const ROLE_MEMBER = 'member';
@@ -14,4 +16,6 @@ interface GroupMemberRepository
 
     public function findGroupMembers(int $groupId): array;
     public function findUserGroups(int $userId): array;
+
+    public function insert(DomainObject $groupMember): DomainObject;
 }

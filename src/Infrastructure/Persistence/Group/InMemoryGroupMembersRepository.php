@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Persistence\Group;
 
 use App\Domain\Objects\Group\Group;
+use App\Domain\Objects\Group\GroupMember;
 use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Domain\Objects\Message\Message;
 use App\Infrastructure\Persistence\DBInterface;
@@ -57,7 +58,10 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
 
         $groupMembers = [];
         foreach ($result as $row) {
-            $groupMembers[] = (new InMemoryUserRepository())->findUserOfId($row['user_id']);
+            $userData = (new InMemoryUserRepository())->findUserOfId($row['user_id']);
+            $groupMember = GroupMember::jsonDeserialize($row);
+            $groupMember->setUserData($userData);
+            $groupMembers[] = $groupMember;
         }
 
         return $groupMembers;

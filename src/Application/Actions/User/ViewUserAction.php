@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Application\Actions\User;
 
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Exception\HttpUnauthorizedException;
 
 class ViewUserAction extends UserAction
 {
@@ -20,9 +19,15 @@ class ViewUserAction extends UserAction
 
         $user = $this->userRepository->findUserOfId($userId);
         $userData = $user->jsonSerialize();
-        unset($userData['password']);
+        $userData = $this->sanitiseUserData($userData);
         $this->logger->info("User of id `{$userId}` was viewed.");
 
         return $this->respondWithData($userData);
+    }
+
+    public static function sanitiseUserData(array $userData): array
+    {
+        unset($userData['password']);
+        return $userData;
     }
 }
