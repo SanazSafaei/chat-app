@@ -18,3 +18,4 @@ services:
         volumes:
             - .:/var/www
             - logs:/var/www/logs
+        container_name: chat-app
