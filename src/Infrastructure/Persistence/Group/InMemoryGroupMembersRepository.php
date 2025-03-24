@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Group;
 
+use App\Domain\Objects\DomainObject;
 use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupMember;
 use App\Domain\Objects\Group\GroupMemberRepository;
@@ -11,7 +12,6 @@ use App\Domain\Objects\Message\Message;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
-use Slim\Logger;
 
 class InMemoryGroupMembersRepository extends Repository implements GroupMemberRepository
 {
@@ -80,5 +80,28 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
         }
 
         return $groups;
+    }
+
+    public function getByUserIdAndGroupId(int $userId, int $groupId): ?DomainObject
+    {
+        $stmt = $this->PDO->prepare('SELECT * FROM group_members WHERE user_id = :userId AND group_id = :groupId');
+        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
+        $stmt->bindParam(':groupId', $groupId, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        if ($result === false) {
+            return null;
+        }
+
+        return GroupMember::jsonDeserialize($result);
+    }
+
+    public function deleteByUserIdAndGroupId(int $userId, int $groupId): void
+    {
+        $stmt = $this->PDO->prepare('DELETE FROM group_members WHERE user_id = :userId AND group_id = :groupId');
+        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
+        $stmt->bindParam(':groupId', $groupId, \PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

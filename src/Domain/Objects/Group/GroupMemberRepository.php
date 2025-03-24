@@ -16,6 +16,9 @@ interface GroupMemberRepository
 
     public function findGroupMembers(int $groupId): array;
     public function findUserGroups(int $userId): array;
+    public function getByUserIdAndGroupId(int $userId, int $groupId): ?DomainObject;
+
+    public function deleteByUserIdAndGroupId(int $userId, int $groupId): void;
 
     public function insert(DomainObject $groupMember): DomainObject;
 }

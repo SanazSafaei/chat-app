@@ -8,6 +8,7 @@ use App\Application\Actions\Authentication\RegisterAction;
 use App\Application\Actions\Group\AddGroupMembersAction;
 use App\Application\Actions\Group\CreateGroupAction;
 use App\Application\Actions\Group\ListGroupsAction;
+use App\Application\Actions\Group\RemoveGroupMembersAction;
 use App\Application\Actions\Group\ViewGroupAction;
 use App\Application\Actions\Group\ViewGroupMembersAction;
 use App\Application\Actions\Message\SendGroupMessageAction;
@@ -51,6 +52,7 @@ return function (App $app) {
         $group->get('/{id}', ViewGroupAction::class); // view group details
         $group->get('/{id}/members', ViewGroupMembersAction::class); // view group members
         $group->post('/{id}/members', AddGroupMembersAction::class); // add group members
+        $group->delete('/{id}/members', RemoveGroupMembersAction::class); // remove group members
         $group->get('/{id}/messages', ViewGroupMessagesAction::class); // view groups messages
         $group->post('/{id}/messages', SendGroupMessageAction::class); // send message to group
     });
