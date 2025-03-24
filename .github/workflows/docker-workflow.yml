@@ -21,5 +21,8 @@ jobs:
       - name: Start services
         run: docker-compose up -d
 
+      - name: Install Composer Dependencies
+        run: docker-compose exec slim composer install
+
       - name: Run Composer Tests
         run: docker compose exec slim ./vendor/phpunit/phpunit/phpunit --configuration ./phpunit.xml --teamcity
