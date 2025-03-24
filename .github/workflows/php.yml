@@ -34,7 +34,7 @@ jobs:
 
     - name: Setup config.yml
       run: |
-        cp config/config.yml ./src/Application/Config/config.yml
+        cp src/Application/Config/auth-secret.yml ./src/Application/Config/config.yml
 
     - name: Run test suite
       run: composer test
