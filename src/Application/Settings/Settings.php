@@ -37,19 +37,11 @@ class Settings implements SettingsInterface
         }
         $config = [];
 
-        $logger = new Logger();
-        $logger->log('info', "settings ===> ");
         foreach ($dirs as $dir) {
-            $logger->log('info', "dir ===> ".$dir);
-            $logger->log('info', "is_dir ===> ".is_dir($dir));
-            foreach (scandir($dir) as $file) {
-                $logger->log('info', "file ===> ".$file);
-            }
             if (is_dir($dir)) {
                 $scanned_directory = array_diff(scandir($dir), ['..', '.']);
                 foreach ($scanned_directory as $file) {
                     $yml = file_get_contents($dir . '/' . $file);
-                    $logger->log('info', "yml ===> ".$yml);
                     $ymlContent = self::extractYml($yml);
                     Assert::notNull($yml, 'Please check ' . $file);
                     $key = explode('.', $file)[0];
