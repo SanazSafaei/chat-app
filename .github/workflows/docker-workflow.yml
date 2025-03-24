@@ -21,6 +21,6 @@ jobs:
       - name: Start services
         run: docker-compose up -d
 
-      - name: Run tests
-        run: |
-          run: docker-compose exec chat-app composer test
+      - name: Run Composer Tests
+        run: docker-compose exec chat-app composer test
+        shell: /usr/bin/bash -e {0}
