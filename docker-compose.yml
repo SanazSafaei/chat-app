@@ -1,7 +1,5 @@
 version: '3.7'
 
-name: chat-app
-
 volumes:
     logs:
         driver: local
