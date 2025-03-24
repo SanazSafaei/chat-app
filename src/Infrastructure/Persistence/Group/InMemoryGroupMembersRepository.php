@@ -36,19 +36,6 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
         return 'group_members';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function findAll(): array
-    {
-        $result = $this->PDO->query('SELECT * FROM groups');
-        $dtoArray = [];
-        foreach ($result->fetchAll() as $row) {
-            $dtoArray[] = Message::jsonDeserialize($row);
-        }
-        return $dtoArray;
-    }
-
     public function findGroupMembers(int $groupId): array
     {
         $stmt = $this->PDO->prepare('SELECT * FROM group_members WHERE group_id = :groupId');
