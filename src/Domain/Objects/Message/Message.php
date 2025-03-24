@@ -79,7 +79,7 @@ class Message extends DomainObject implements JsonSerializable
         ];
     }
 
-    public static function jsonDeserialize($values): DomainObject
+    public static function jsonDeserialize($values): Message
     {
         return new self(
             $values['id'] ?? null,
