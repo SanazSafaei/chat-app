@@ -23,4 +23,4 @@ jobs:
 
       - name: Run tests
         run: |
-          run: docker-compose exec app composer test
+          run: docker-compose exec chat-app composer test
