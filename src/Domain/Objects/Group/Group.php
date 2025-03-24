@@ -15,14 +15,14 @@ class Group extends DomainObject implements JsonSerializable
     private string $description;
     private DateTime $createdAt;
     private DateTime $updatedAt;
-    private int $creatorId;
+    private int $createdBy;
 
     public function __construct(
         ?int $id,
         string $name,
         string $photo,
         string $description,
-        int $creatorIid,
+        int $createdBy,
         ?DateTime $createdAt,
         ?DateTime $updatedAt
     ) {
@@ -30,7 +30,7 @@ class Group extends DomainObject implements JsonSerializable
         $this->name = $name;
         $this->photo = $photo;
         $this->description = $description;
-        $this->creatorId = $creatorIid;
+        $this->createdBy = $createdBy;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
     }
@@ -50,9 +50,9 @@ class Group extends DomainObject implements JsonSerializable
         return $this->description;
     }
 
-    public function getCreatorId(): int
+    public function getCreatedBy(): int
     {
-        return $this->creatorId;
+        return $this->createdBy;
     }
 
     public function getCreatedAt(): string
@@ -72,6 +72,7 @@ class Group extends DomainObject implements JsonSerializable
             'name' => $this->name,
             'photo' => $this->photo,
             'description' => $this->description,
+            'created_by' => $this->createdBy,
             'created_at' => $this->createdAt->format('Y-m-d H:i:s'),
             'updated_at' => $this->updatedAt->format('Y-m-d H:i:s')
         ];
@@ -84,7 +85,7 @@ class Group extends DomainObject implements JsonSerializable
             $values['name'],
             $values['photo'],
             $values['description'],
-            $values['creator_id'],
+            $values['created_by'],
             new DateTime($values['created_at']),
             new DateTime($values['updated_at'])
         );

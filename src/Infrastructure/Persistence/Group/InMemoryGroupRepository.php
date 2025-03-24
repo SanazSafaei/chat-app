@@ -25,7 +25,7 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
             'name' => 'TEXT',
             'photo' => 'TEXT',
             'description' => "TEXT",
-            'creator_id' => 'INT',
+            'created_by' => 'INT',
             'created_at' => 'datetime',
             'updated_at' => 'datetime'
         ];

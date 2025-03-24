@@ -64,7 +64,7 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
     public function findMessagesToGroupId(int $to): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE 'to_id' = {$to} and type = 'group'");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE to_id = {$to} and type = GroupRepository::TYPE_GROUP");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);

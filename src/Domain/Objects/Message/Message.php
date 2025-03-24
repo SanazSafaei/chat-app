@@ -94,7 +94,7 @@ class Message extends DomainObject implements JsonSerializable
 
     public function validateInput(): void
     {
-        if (!in_array($this->messageType, MessageRepository::MESSAGE_TYPE)) {
+        if (!in_array($this->messageType, MessageRepository::MESSAGE_TYPES)) {
             throw new Exception('Invalid type value. Allowed values are: private_message, group_message');
         }
     }

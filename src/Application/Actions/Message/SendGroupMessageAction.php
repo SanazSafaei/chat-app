@@ -4,20 +4,19 @@ namespace App\Application\Actions\Message;
 
 use App\Domain\UseCase\Message\SendMessage;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Exception\HttpUnauthorizedException;
 
-class SendPrivateMessageAction extends MessageAction
+class SendGroupMessageAction extends MessageAction
 {
     protected function action(): Response
     {
         $this->validateUserIsLoggedIn();
 
-        $owner = $this->getUserId();
+        $senderId = $this->getUserId();
 
         $data = $this->getFormData();
-        $data['from'] = $owner;
+        $data['from'] = $senderId;
         $data['to'] = (int) $this->resolveArg('id');
-        $data['type'] = $this->messageRepository::TYPE_PRIVATE;
+        $data['type'] = $this->messageRepository::TYPE_GROUP;
 
         $messages = (new SendMessage($data))->execute();
         return $this->respondWithData($messages);
