@@ -21,7 +21,7 @@ class ViewGroupAction extends GroupAction
 
         $group = $this->groupRepository->findById($groupId);
 
-        $this->logger->info("User of id `{$groupId}` was viewed.");
+        $this->logger->info("Group of id `{$groupId}` was viewed by user `{$this->getUserId()}`.");
 
         return $this->respondWithData($group);
     }
