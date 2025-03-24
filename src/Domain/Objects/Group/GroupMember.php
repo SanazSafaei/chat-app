@@ -6,7 +6,7 @@ namespace App\Domain\Objects\Group;
 
 use App\Domain\Objects\DomainObject;
 use App\Domain\Objects\User\User;
-use Exception;
+use App\Domain\Validators\GroupMemberValidator;
 use JsonSerializable;
 class GroupMember extends DomainObject implements JsonSerializable
 {
@@ -26,7 +26,7 @@ class GroupMember extends DomainObject implements JsonSerializable
         $this->userId = $userId;
         $this->groupId = $groupId;
         $this->role = $role;
-        $this->validateInput();
+        GroupMemberValidator::validate($this);
     }
 
     public function getUserId(): int
@@ -73,12 +73,5 @@ class GroupMember extends DomainObject implements JsonSerializable
             $values['group_id'],
             $values['role']
         );
-    }
-
-    public function validateInput(): void
-    {
-        if (!in_array($this->role, GroupMemberRepository::ROLES)) {
-            throw new Exception('Invalid type value. Allowed values are: private_message, group_message');
-        }
     }
 }
