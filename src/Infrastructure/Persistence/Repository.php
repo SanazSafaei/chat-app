@@ -22,7 +22,9 @@ abstract class Repository
 
     public function getCreateTableSchema(): string
     {
-        // 'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, first_name TEXT, last_name TEXT, photo TEXT, last_seen datetime, created_at datetime, updated_at datetime)'
+        // 'CREATE TABLE IF NOT EXISTS users
+        // (id INTEGER PRIMARY KEY, username TEXT, first_name TEXT, last_name TEXT, photo TEXT, last_seen datetime,
+        // created_at datetime, updated_at datetime)'
         $fields = $this->getFields();
         $tableDefinition = '(';
         foreach ($fields as $fieldName => $fieldType) {
@@ -40,7 +42,8 @@ abstract class Repository
 
     public function insert(DomainObject $domain): DomainObject
     {
-        //$this->myPDO->query('INSERT INTO users (id, username, first_name, last_name, photo, last_seen, created_at, updated_at) VALUES (2, "bill.gates", "Bill", "Gates", "test/photo", DateTime(), DateTime(), DateTime())')->execute();
+        //$this->myPDO->query('INSERT INTO users (id, username, first_name, last_name, photo, last_seen, created_at, updated_at)
+        //VALUES (2, "bill.gates", "Bill", "Gates", "test/photo", DateTime(), DateTime(), DateTime())')->execute();
 
         $query = 'INSERT INTO ' . $this->getTableName() . ' (';
         foreach ($this->getFields() as $fieldName => $fieldType) {

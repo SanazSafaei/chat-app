@@ -6,10 +6,10 @@ use App\Domain\Objects\DomainObject;
 
 interface GroupMemberRepository
 {
-    public const ROLE_MEMBER = 'member';
-    public const ROLE_ADMIN = 'admin';
+    public const string ROLE_MEMBER = 'member';
+    public const string ROLE_ADMIN = 'admin';
 
-    public const ROLES = [
+    public const array ROLES = [
         self::ROLE_MEMBER,
         self::ROLE_ADMIN
     ];

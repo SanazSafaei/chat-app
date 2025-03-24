@@ -4,8 +4,8 @@ namespace App\Domain\UseCase\Group;
 
 use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupRepository;
-use DateTime;
 use Webmozart\Assert\Assert;
+use DateTime;
 
 class CreateGroup
 {

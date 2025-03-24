@@ -9,6 +9,8 @@ use App\Domain\Objects\Group\GroupRepository;
 use App\Domain\Objects\Message\Message;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
+use Exception;
+use PDO;
 
 class InMemoryGroupRepository extends Repository implements GroupRepository
 {
@@ -36,9 +38,6 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
         return 'groups';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(): array
     {
         $result = $this->PDO->query('SELECT * FROM groups');
@@ -52,12 +51,12 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
     public function findById(int $id): Group
     {
         $stmt = $this->PDO->prepare('SELECT * FROM groups WHERE id = :id');
-        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch();
 
         if ($result === false) {
-            throw new \Exception('Group not found');
+            throw new Exception('Group not found');
         }
 
         return Group::jsonDeserialize($result);
@@ -66,7 +65,7 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
     public function findByUserId(int $userId): array
     {
         $stmt = $this->PDO->prepare('SELECT * FROM groups WHERE creator_id = :userId');
-        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll();
 

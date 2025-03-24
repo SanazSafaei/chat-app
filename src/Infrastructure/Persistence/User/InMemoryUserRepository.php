@@ -57,7 +57,7 @@ class InMemoryUserRepository extends Repository implements UserRepository
      */
     public function findUserOfId(int $id): User
     {
-        $result = $this->PDO->query("SELECT * FROM users WHERE id = {$id}");
+        $result = $this->PDO->query("SELECT * FROM users WHERE id = $id");
         $result = $result->fetch();
         if (!isset($result) || !$result) {
             throw new UserNotFoundException();
@@ -79,5 +79,4 @@ class InMemoryUserRepository extends Repository implements UserRepository
 
         return User::jsonDeserialize($result);
     }
-
 }

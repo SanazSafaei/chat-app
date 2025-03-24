@@ -42,11 +42,14 @@ class SendMessage
     {
         Assert::keyExists($this->messageData, 'to', 'Destination[to] field is mandatory.');
         Assert::keyExists($this->messageData, 'from', 'Origin[from] field is mandatory.');
-        if(!isset($this->messageData['message']) && !isset($this->messageData['media'])) {
+        if (!isset($this->messageData['message']) && !isset($this->messageData['media'])) {
             throw new Exception('Message or Media should contain at least one value.');
         }
         Assert::keyExists($this->messageData, 'type', 'Type field is mandatory.');
-        Assert::inArray($this->messageData['type'], MessageRepository::MESSAGE_TYPES,
-            'Message Type field can only be '. implode(', ', MessageRepository::MESSAGE_TYPES));
+        Assert::inArray(
+            $this->messageData['type'],
+            MessageRepository::MESSAGE_TYPES,
+            'Message Type field can only be ' . implode(', ', MessageRepository::MESSAGE_TYPES)
+        );
     }
 }

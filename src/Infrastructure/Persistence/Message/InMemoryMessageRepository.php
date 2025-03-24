@@ -35,9 +35,6 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
         return 'messages';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(): array
     {
         $result = $this->PDO->query('SELECT * FROM messages');
@@ -48,12 +45,9 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
         return $dtoArray;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findMessagesFromToId(int $to, int $from, ?string $type = null): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE (from_id = {$from} and to_id = {$to}) OR (from_id = {$to} and to_id = {$from}) AND type = '{$type}'");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE (from_id = $from and to_id = $to) OR (from_id = $to and to_id = $from) AND type = '$type'");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);
@@ -64,7 +58,7 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
     public function findMessagesToGroupId(int $to): array
     {
-        $result = $this->PDO->query("SELECT * FROM messages WHERE to_id = {$to} and type = GroupRepository::TYPE_GROUP");
+        $result = $this->PDO->query("SELECT * FROM messages WHERE to_id = $to and type = GroupRepository::TYPE_GROUP");
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
             $dtoArray[] = Message::jsonDeserialize($row);
@@ -72,5 +66,4 @@ class InMemoryMessageRepository extends Repository implements MessageRepository
 
         return $dtoArray;
     }
-
 }

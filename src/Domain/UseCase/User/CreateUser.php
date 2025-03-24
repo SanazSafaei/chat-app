@@ -6,8 +6,8 @@ use App\Domain\Objects\User\User;
 use App\Domain\Objects\User\UserNotFoundException;
 use App\Domain\UseCase\Authentication\JwtManager;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
-use DateTime;
 use Webmozart\Assert\Assert;
+use DateTime;
 
 class CreateUser
 {
@@ -36,6 +36,8 @@ class CreateUser
             $now,
             $now
         );
+
+        /** @var User $user */
         $user = (new InMemoryUserRepository())->insert($user);
         $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
         return [$user, $token];

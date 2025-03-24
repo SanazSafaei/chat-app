@@ -7,6 +7,7 @@ namespace App\Domain\Objects\Message;
 use App\Domain\Objects\DomainObject;
 use App\Domain\Validators\MessageValidator;
 use DateTime;
+use DateTimeInterface;
 use JsonSerializable;
 
 class Message extends DomainObject implements JsonSerializable
@@ -76,7 +77,7 @@ class Message extends DomainObject implements JsonSerializable
             'type' => $this->messageType,
             'message' => $this->message,
             'media' => $this->media,
-            'created_at' => $this->createdAt?->format(DateTime::ATOM),
+            'created_at' => $this->createdAt?->format(DateTimeInterface::ATOM),
         ];
     }
 

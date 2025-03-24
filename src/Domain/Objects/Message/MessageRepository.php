@@ -10,5 +10,4 @@ interface MessageRepository
     public function findMessagesFromToId(int $to, int $from, ?string $type = null): array;
 
     public function findMessagesToGroupId(int $to): array;
-
 }

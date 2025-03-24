@@ -4,7 +4,6 @@ namespace App\Domain\UseCase\Group;
 
 use App\Domain\Objects\Group\GroupMember;
 use App\Domain\Objects\Group\GroupMemberRepository;
-use DateTime;
 use Webmozart\Assert\Assert;
 
 class AddGroupMember

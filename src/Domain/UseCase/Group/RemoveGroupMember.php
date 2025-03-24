@@ -31,6 +31,7 @@ class RemoveGroupMember
         Assert::integer($this->memberData['user_id'], 'User ID must be an integer.');
 
         Assert::keyExists($this->memberData, 'requested_by', 'Requested User ID is required.');
+        /** @var GroupMember $groupMember */
         $groupMember = $this->groupMemberRepository->getByUserIdAndGroupId($this->memberData['requested_by'], $this->memberData['group_id']);
         Assert::eq($groupMember->getRole(), GroupMemberRepository::ROLE_ADMIN, 'Only admin can remove group members.');
     }

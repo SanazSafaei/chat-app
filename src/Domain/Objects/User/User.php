@@ -7,6 +7,7 @@ namespace App\Domain\Objects\User;
 use App\Domain\Objects\DomainObject;
 use DateTime;
 use JsonSerializable;
+use ReturnTypeWillChange;
 
 class User extends DomainObject implements JsonSerializable
 {
@@ -86,7 +87,7 @@ class User extends DomainObject implements JsonSerializable
         return $this->updatedAt->format('Y-m-d H:i:s');
     }
 
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function jsonSerialize(): array
     {
         return [

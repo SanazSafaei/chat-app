@@ -8,9 +8,9 @@ use App\Domain\Objects\DomainObject;
 use App\Domain\Objects\User\User;
 use App\Domain\Validators\GroupMemberValidator;
 use JsonSerializable;
+
 class GroupMember extends DomainObject implements JsonSerializable
 {
-
     private int $userId;
     private int $groupId;
     private string $role;

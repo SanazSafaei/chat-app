@@ -11,6 +11,7 @@ use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
+use PDO;
 
 class InMemoryGroupMembersRepository extends Repository implements GroupMemberRepository
 {
@@ -38,13 +39,14 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
     public function findGroupMembers(int $groupId): array
     {
         $stmt = $this->PDO->prepare('SELECT * FROM group_members WHERE group_id = :groupId');
-        $stmt->bindParam(':groupId', $groupId, \PDO::PARAM_INT);
+        $stmt->bindParam(':groupId', $groupId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll();
 
         $groupMembers = [];
         foreach ($result as $row) {
             $userData = (new InMemoryUserRepository())->findUserOfId($row['user_id']);
+            /** @var GroupMember $groupMember */
             $groupMember = GroupMember::jsonDeserialize($row);
             $groupMember->setUserData($userData);
             $groupMembers[] = $groupMember;
@@ -56,7 +58,7 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
     public function findUserGroups(int $userId): array
     {
         $stmt = $this->PDO->prepare('SELECT * FROM group_members WHERE user_id = :userId');
-        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll();
 
@@ -71,8 +73,8 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
     public function getByUserIdAndGroupId(int $userId, int $groupId): ?DomainObject
     {
         $stmt = $this->PDO->prepare('SELECT * FROM group_members WHERE user_id = :userId AND group_id = :groupId');
-        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
-        $stmt->bindParam(':groupId', $groupId, \PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':groupId', $groupId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch();
 
@@ -86,8 +88,8 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
     public function deleteByUserIdAndGroupId(int $userId, int $groupId): void
     {
         $stmt = $this->PDO->prepare('DELETE FROM group_members WHERE user_id = :userId AND group_id = :groupId');
-        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
-        $stmt->bindParam(':groupId', $groupId, \PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':groupId', $groupId, PDO::PARAM_INT);
         $stmt->execute();
     }
 }

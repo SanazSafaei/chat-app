@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Validators;
 
-use App\Domain\Objects\Group\GroupMember;
-use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Domain\Objects\Message\Message;
 use App\Domain\Objects\Message\MessageRepository;
 use Exception;

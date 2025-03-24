@@ -4,13 +4,14 @@ namespace App\Domain\UseCase\Authentication;
 
 use App\Application\Settings\Settings;
 use DateTimeImmutable;
+use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use stdClass;
 
 class JwtManager
 {
-    const string HS256_ALGO = 'HS256';
+    private const string HS256_ALGO = 'HS256';
 
     private static function getPrivateKey(): string
     {
@@ -30,7 +31,7 @@ class JwtManager
         $payload = JWT::decode($jwt, new Key($key, self::HS256_ALGO));
         $now = new DateTimeImmutable();
         if($payload->expires < $now->getTimestamp()) {
-            throw new \Exception('Token expired');
+            throw new Exception('Token expired');
         }
         return $payload;
     }
