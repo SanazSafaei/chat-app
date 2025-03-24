@@ -7,9 +7,10 @@ namespace App\Infrastructure\Persistence\Group;
 use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Domain\Objects\Message\Message;
-use App\Domain\Objects\User\User;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
+use App\Infrastructure\Persistence\User\InMemoryUserRepository;
+use Slim\Logger;
 
 class InMemoryGroupMembersRepository extends Repository implements GroupMemberRepository
 {
@@ -56,7 +57,7 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
 
         $groupMembers = [];
         foreach ($result as $row) {
-            $groupMembers[] = User::jsonDeserialize($row);
+            $groupMembers[] = (new InMemoryUserRepository())->findUserOfId($row['user_id']);
         }
 
         return $groupMembers;

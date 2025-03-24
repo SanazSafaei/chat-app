@@ -20,7 +20,7 @@ class GroupMember extends DomainObject implements JsonSerializable
         ?int $id,
         int $userId,
         int $groupId,
-        string $role = GroupMemberRepository::ROLE_MEMBER
+        string $role
     ) {
         $this->id = $id;
         $this->userId = $userId;
@@ -48,8 +48,8 @@ class GroupMember extends DomainObject implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            'userId' => $this->userId,
-            'groupId' => $this->groupId,
+            'user_id' => $this->userId,
+            'group_id' => $this->groupId,
             'role' => $this->role,
         ];
     }
@@ -58,8 +58,8 @@ class GroupMember extends DomainObject implements JsonSerializable
     {
         return new self(
             $values['id'] ?? null,
-            $values['userId'],
-            $values['groupId'],
+            $values['user_id'],
+            $values['group_id'],
             $values['role']
         );
     }
