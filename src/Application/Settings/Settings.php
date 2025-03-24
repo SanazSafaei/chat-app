@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Settings;
 
-use Slim\Logger;
+use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
 class Settings implements SettingsInterface
@@ -21,8 +21,11 @@ class Settings implements SettingsInterface
     /**
      * @return mixed
      */
-    public function get(string $key = '')
+    public function get(string $key = ''): mixed
     {
+        if (!empty($key) && !array_key_exists($key, $this->settings)) {
+            throw new InvalidArgumentException('Key not found in settings');
+        }
         return (empty($key)) ? $this->settings : $this->settings[$key];
     }
 

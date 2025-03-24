@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use InvalidArgumentException;
 use stdClass;
 
 class JwtManager
@@ -15,13 +16,25 @@ class JwtManager
 
     private static function getPrivateKey(): string
     {
-        $jwtConfig = (new Settings([]))->get('auth-secret') ?? 'sample:secret:key';
+        try {
+            $jwtConfig = (new Settings([]))->get('auth-secret');
+        } catch (InvalidArgumentException $e) {
+            $jwtConfig = [
+                'secret_key' => 'temp-key'
+            ];
+        }
         return $jwtConfig['secret_key'];
     }
 
     private static function getTtl(): int
     {
-        $jwtConfig = (new Settings([]))->get('auth-secret');
+        try {
+            $jwtConfig = (new Settings([]))->get('auth-secret');
+        } catch (InvalidArgumentException $e) {
+                $jwtConfig = [
+                    'ttl' => 3600
+                ];
+        }
         return $jwtConfig['ttl'];
     }
 
@@ -30,7 +43,7 @@ class JwtManager
         $key = self::getPrivateKey();
         $payload = JWT::decode($jwt, new Key($key, self::HS256_ALGO));
         $now = new DateTimeImmutable();
-        if($payload->expires < $now->getTimestamp()) {
+        if ($payload->expires < $now->getTimestamp()) {
             throw new Exception('Token expired');
         }
         return $payload;
@@ -51,5 +64,4 @@ class JwtManager
             'expires' => time() + self::getTtl()
         ];
     }
-
 }
