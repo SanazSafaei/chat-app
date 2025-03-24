@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Settings;
 
+use Slim\Logger;
 use Webmozart\Assert\Assert;
 
 class Settings implements SettingsInterface
@@ -14,6 +15,11 @@ class Settings implements SettingsInterface
     {
         $config = self::loadConfig();
         $settings = array_merge($settings, $config);
+        $logger = new Logger();
+        $logger->log('info', "settings ===> ");
+        foreach ($settings as $key => $value) {
+            $logger->log('info', $key . ' => ' . $value);
+        }
         $this->settings = $settings;
     }
 

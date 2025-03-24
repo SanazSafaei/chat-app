@@ -38,7 +38,7 @@ class ViewUserActionTest extends TestCase
 
         $container->set(UserRepository::class, $userRepositoryProphecy->reveal());
         $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
-        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer '.$token);
+        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer ' . $token);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
@@ -68,7 +68,7 @@ class ViewUserActionTest extends TestCase
 
 //        $request = $this->createRequest('GET', '/users/1');
         $token = JwtManager::encode(JwtManager::getPayload(1, 'sanazz'));
-        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer '.$token);
+        $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer ' . $token);
 
         $userRepositoryProphecy = $this->prophesize(UserRepository::class);
         $userRepositoryProphecy

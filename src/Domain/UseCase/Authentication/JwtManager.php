@@ -15,7 +15,7 @@ class JwtManager
 
     private static function getPrivateKey(): string
     {
-        $jwtConfig = (new Settings([]))->get('auth-secret');
+        $jwtConfig = (new Settings([]))->get('auth-secret') ?? 'sample:secret:key';
         return $jwtConfig['secret_key'];
     }
 
