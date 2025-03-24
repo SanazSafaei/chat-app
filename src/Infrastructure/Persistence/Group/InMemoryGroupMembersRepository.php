@@ -8,7 +8,6 @@ use App\Domain\Objects\DomainObject;
 use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupMember;
 use App\Domain\Objects\Group\GroupMemberRepository;
-use App\Domain\Objects\Message\Message;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
