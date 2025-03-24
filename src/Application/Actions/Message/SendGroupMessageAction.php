@@ -18,7 +18,7 @@ class SendGroupMessageAction extends MessageAction
         $data['to'] = (int) $this->resolveArg('id');
         $data['type'] = $this->messageRepository::TYPE_GROUP;
 
-        $messages = (new SendMessage($data))->execute();
+        $messages = (new SendMessage($data, $this->messageRepository))->execute();
         return $this->respondWithData($messages);
     }
 }

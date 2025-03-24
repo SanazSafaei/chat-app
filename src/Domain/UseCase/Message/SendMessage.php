@@ -12,10 +12,12 @@ use Webmozart\Assert\Assert;
 class SendMessage
 {
     private array $messageData;
+    private MessageRepository $messageRepository;
 
-    public function __construct(array $messageData)
+    public function __construct(array $messageData, MessageRepository $messageRepository)
     {
         $this->messageData = $messageData;
+        $this->messageRepository = $messageRepository;
         $this->validateData();
     }
 
@@ -33,7 +35,7 @@ class SendMessage
             $this->messageData['media'] ?? '',
             $now
         );
-        $message = (new InMemoryMessageRepository())->insert($message);
+        $message = $this->messageRepository->insert($message);
 
         return $message->jsonSerialize();
     }
