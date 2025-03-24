@@ -16,6 +16,5 @@ abstract class UserAction extends Action
     {
         parent::__construct($logger);
         $this->userRepository = $userRepository;
-        $this->validateUserIsLoggedIn();
     }
 }

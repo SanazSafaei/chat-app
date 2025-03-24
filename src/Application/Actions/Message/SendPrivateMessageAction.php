@@ -10,6 +10,8 @@ class SendPrivateMessageAction extends MessageAction
 {
     protected function action(): Response
     {
+        $this->validateUserIsLoggedIn();
+
         $owner = $this->getUserId();
 
         $data = $this->getFormData();

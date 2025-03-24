@@ -9,6 +9,8 @@ class ViewChatAction extends MessageAction
 {
     protected function action(): Response
     {
+        $this->validateUserIsLoggedIn();
+
         $guest = (int) $this->resolveArg('id');
         $owner = $this->getUserId();
 

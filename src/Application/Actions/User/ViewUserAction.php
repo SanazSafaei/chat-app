@@ -14,6 +14,8 @@ class ViewUserAction extends UserAction
      */
     protected function action(): Response
     {
+        $this->validateUserIsLoggedIn();
+
         $userId = (int) $this->resolveArg('id');
 
         $user = $this->userRepository->findUserOfId($userId);
