@@ -6,6 +6,8 @@ use App\Domain\Objects\DomainObject;
 
 interface GroupRepository
 {
+    public function findAll(): array;
+
     public function findById(int $id): Group;
 
     public function findByUserId(int $userId): array;
