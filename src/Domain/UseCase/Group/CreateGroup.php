@@ -4,19 +4,20 @@ namespace App\Domain\UseCase\Group;
 
 use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupRepository;
+use App\Domain\UseCase\UseCase;
 use Webmozart\Assert\Assert;
 use DateTime;
 
-class CreateGroup
+class CreateGroup extends UseCase
 {
     private array $groupData;
     private GroupRepository $groupRepository;
 
     public function __construct(array $groupData, GroupRepository $groupRepository)
     {
+        parent::__construct();
         $this->groupData = $groupData;
         $this->groupRepository = $groupRepository;
-        $this->validateData();
     }
 
     public function execute(): Group
@@ -38,7 +39,7 @@ class CreateGroup
         return $group;
     }
 
-    private function validateData(): void
+    protected function validateData(): void
     {
         Assert::keyExists($this->groupData, 'name', 'Group name is required.');
         Assert::stringNotEmpty($this->groupData['name'], 'Group name cannot be empty.');

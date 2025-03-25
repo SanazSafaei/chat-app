@@ -3,17 +3,18 @@
 namespace App\Domain\UseCase\User;
 
 use App\Domain\UseCase\Authentication\JwtManager;
+use App\Domain\UseCase\UseCase;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
 use Webmozart\Assert\Assert;
 
-class LoginUser
+class LoginUser extends UseCase
 {
     private array $userData;
 
     public function __construct(array $userData)
     {
+        parent::__construct();
         $this->userData = $userData;
-        $this->validateData();
     }
 
     public function execute(): array
@@ -28,7 +29,7 @@ class LoginUser
         return [$user, $token];
     }
 
-    private function validateData(): void
+    protected function validateData(): void
     {
         Assert::keyExists($this->userData, 'username', 'Username is mandatory.');
         Assert::keyExists($this->userData, 'password', 'Password is mandatory.');

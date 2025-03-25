@@ -4,18 +4,19 @@ namespace App\Domain\UseCase\Group;
 
 use App\Domain\Objects\Group\GroupMember;
 use App\Domain\Objects\Group\GroupMemberRepository;
+use App\Domain\UseCase\UseCase;
 use Webmozart\Assert\Assert;
 
-class AddGroupMember
+class AddGroupMember extends UseCase
 {
     private array $memberData;
     private GroupMemberRepository $groupMemberRepository;
 
     public function __construct(array $memberData, GroupMemberRepository $groupMemberRepository)
     {
+        parent::__construct();
         $this->memberData = $memberData;
         $this->groupMemberRepository = $groupMemberRepository;
-        $this->validateData();
     }
 
     public function execute(): GroupMember
@@ -33,7 +34,7 @@ class AddGroupMember
         return $groupMember;
     }
 
-    private function validateData(): void
+    protected function validateData(): void
     {
         Assert::keyExists($this->memberData, 'group_id', 'Group ID is required.');
         Assert::integer($this->memberData['group_id'], 'Group ID must be an integer.');

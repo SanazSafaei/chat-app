@@ -4,20 +4,21 @@ namespace App\Domain\UseCase\Message;
 
 use App\Domain\Objects\Message\Message;
 use App\Domain\Objects\Message\MessageRepository;
+use App\Domain\UseCase\UseCase;
 use DateTime;
 use Exception;
 use Webmozart\Assert\Assert;
 
-class SendMessage
+class SendMessage extends UseCase
 {
     private array $messageData;
     private MessageRepository $messageRepository;
 
     public function __construct(array $messageData, MessageRepository $messageRepository)
     {
+        parent::__construct();
         $this->messageData = $messageData;
         $this->messageRepository = $messageRepository;
-        $this->validateData();
     }
 
     public function execute(): array
@@ -39,7 +40,7 @@ class SendMessage
         return $message->jsonSerialize();
     }
 
-    private function validateData(): void
+    protected function validateData(): void
     {
         Assert::keyExists($this->messageData, 'to', 'Destination[to] field is mandatory.');
         Assert::keyExists($this->messageData, 'from', 'Origin[from] field is mandatory.');
