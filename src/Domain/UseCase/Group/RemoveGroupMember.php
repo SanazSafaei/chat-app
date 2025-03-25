@@ -14,14 +14,17 @@ class RemoveGroupMember extends UseCase
 
     public function __construct(array $memberData, GroupMemberRepository $groupMemberRepository)
     {
-        parent::__construct();
         $this->memberData = $memberData;
         $this->groupMemberRepository = $groupMemberRepository;
+        parent::__construct();
     }
 
     public function execute(): void
     {
-        $this->groupMemberRepository->deleteByUserIdAndGroupId($this->memberData['user_id'], $this->memberData['group_id']);
+        $this->groupMemberRepository->deleteByUserIdAndGroupId(
+            $this->memberData['user_id'],
+            $this->memberData['group_id']
+        );
     }
 
     protected function validateData(): void

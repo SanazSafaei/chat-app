@@ -14,9 +14,9 @@ class AddGroupMember extends UseCase
 
     public function __construct(array $memberData, GroupMemberRepository $groupMemberRepository)
     {
-        parent::__construct();
         $this->memberData = $memberData;
         $this->groupMemberRepository = $groupMemberRepository;
+        parent::__construct();
     }
 
     public function execute(): GroupMember

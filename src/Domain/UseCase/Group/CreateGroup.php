@@ -15,9 +15,9 @@ class CreateGroup extends UseCase
 
     public function __construct(array $groupData, GroupRepository $groupRepository)
     {
-        parent::__construct();
         $this->groupData = $groupData;
         $this->groupRepository = $groupRepository;
+        parent::__construct();
     }
 
     public function execute(): Group

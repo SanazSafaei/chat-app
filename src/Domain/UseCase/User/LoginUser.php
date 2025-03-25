@@ -13,8 +13,8 @@ class LoginUser extends UseCase
 
     public function __construct(array $userData)
     {
-        parent::__construct();
         $this->userData = $userData;
+        parent::__construct();
     }
 
     public function execute(): array

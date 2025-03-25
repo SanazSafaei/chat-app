@@ -20,9 +20,9 @@ class CreateUser extends UseCase
 
     public function __construct(array $userData, UserRepository $userRepository)
     {
-        parent::__construct();
         $this->userData = $userData;
         $this->userRepository = $userRepository;
+        parent::__construct();
     }
 
     public function execute(): array
