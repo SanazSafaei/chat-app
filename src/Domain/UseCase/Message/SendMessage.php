@@ -16,9 +16,9 @@ class SendMessage extends UseCase
 
     public function __construct(array $messageData, MessageRepository $messageRepository)
     {
-        parent::__construct();
         $this->messageData = $messageData;
         $this->messageRepository = $messageRepository;
+        parent::__construct();
     }
 
     public function execute(): array
