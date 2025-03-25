@@ -27,6 +27,12 @@ class InMemoryGroupMembersRepositoryTest extends TestCase
         $member1 = new GroupMember(1, 1, 1, GroupMemberRepository::ROLE_MEMBER);
         $member2 = new GroupMember(2, 2, 1, GroupMemberRepository::ROLE_MEMBER);
 
+        $now = new \DateTime('2025-03-22T10:01:04');
+        $user1 = new User(1, "bill.gates", "12345", "Bill", "Gates", 'bill@gate.com', "test/photo", $now, $now, $now);
+        $user2 = new User(2, "bill.gates", "12345", "Bill", "Gates", 'bill@gate.com', "test/photo", $now, $now, $now);
+        $userRepository = new InMemoryUserRepository(new FakeDB());
+        $userRepository->insert($user1);
+        $userRepository->insert($user2);
         $repository = new InMemoryGroupMembersRepository(new FakeDB());
 
         foreach ([$member1, $member2] as $member) {
