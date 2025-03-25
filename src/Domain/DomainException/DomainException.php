@@ -8,8 +8,8 @@ use Exception;
 
 abstract class DomainException extends Exception
 {
-    public function __construct(string $message)
+    public function __construct(?string $message = null)
     {
-        parent::__construct($message, 400);
+        parent::__construct($message ?? $this->getMessage() , 400);
     }
 }
