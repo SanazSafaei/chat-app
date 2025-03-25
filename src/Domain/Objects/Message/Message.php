@@ -77,7 +77,7 @@ class Message extends DomainObject implements JsonSerializable
             'type' => $this->messageType,
             'message' => $this->message,
             'media' => $this->media,
-            'created_at' => $this->createdAt?->format(DateTimeInterface::ATOM),
+            'created_at' => $this->createdAt?->format('Y-m-d H:i:s'),
         ];
     }
 
@@ -90,7 +90,7 @@ class Message extends DomainObject implements JsonSerializable
             $values['type'],
             $values['message'],
             $values['media'],
-            isset($values['createdAt']) ? new DateTime($values['createdAt']) : null
+            isset($values['created_at']) ? new DateTime($values['created_at']) : null
         );
     }
 }

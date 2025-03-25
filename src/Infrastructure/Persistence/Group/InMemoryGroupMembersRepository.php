@@ -45,7 +45,7 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
 
         $groupMembers = [];
         foreach ($result as $row) {
-            $userData = (new InMemoryUserRepository())->findUserOfId($row['user_id']);
+            $userData = (new InMemoryUserRepository($this->db))->findUserOfId($row['user_id']);
             /** @var GroupMember $groupMember */
             $groupMember = GroupMember::jsonDeserialize($row);
             $groupMember->setUserData($userData);

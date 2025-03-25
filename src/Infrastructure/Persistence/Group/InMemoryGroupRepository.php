@@ -9,6 +9,7 @@ use App\Domain\Objects\Group\GroupRepository;
 use App\Domain\Objects\Message\Message;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
+use DI\NotFoundException;
 use Exception;
 use PDO;
 
@@ -43,7 +44,7 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
         $result = $this->PDO->query('SELECT * FROM groups');
         $dtoArray = [];
         foreach ($result->fetchAll() as $row) {
-            $dtoArray[] = Message::jsonDeserialize($row);
+            $dtoArray[] = Group::jsonDeserialize($row);
         }
         return $dtoArray;
     }
@@ -56,7 +57,7 @@ class InMemoryGroupRepository extends Repository implements GroupRepository
         $result = $stmt->fetch();
 
         if ($result === false) {
-            throw new Exception('Group not found');
+            throw new NotFoundException('Group not found');
         }
 
         return Group::jsonDeserialize($result);

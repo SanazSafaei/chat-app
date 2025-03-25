@@ -12,10 +12,12 @@ abstract class Repository
 {
     protected PDO $PDO;
     private Logger $logger;
+    protected DBInterface $db;
 
     #[Inject (['DB' => DBInterface::class])]
     public function __construct(DBInterface $DB)
     {
+        $this->db = $DB;
         $this->logger = new Logger();
         $this->PDO = ($this->getDB($DB))->getConnection();
     }
