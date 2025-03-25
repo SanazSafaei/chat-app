@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/sanaz/PhpstormProjects/Chat-Application/Chat-Application/src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/Users/sanaz/PhpstormProjects/Chat-Application/Chat-Application/src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Application/Actions/Authentication/LogoutAction.php.html#8">App\Application\Actions\Authentication\LogoutAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Handlers/ShutdownHandler.php.html#11">App\Application\Handlers\ShutdownHandler</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/ResponseEmitter/ResponseEmitter.php.html#10">App\Application\ResponseEmitter\ResponseEmitter</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/DB.php.html#7">App\Infrastructure\Persistence\DB</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/UseCase/UseCase.php.html#8">App\Domain\UseCase\UseCase</a></td><td class="text-right">16%</td></tr>
+       <tr><td><a href="Application/Middleware/AuthenticationMiddleware.php.html#14">App\Application\Middleware\AuthenticationMiddleware</a></td><td class="text-right">31%</td></tr>
+       <tr><td><a href="Application/Middleware/SessionMiddleware.php.html#12">App\Application\Middleware\SessionMiddleware</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/Validators/GroupMemberValidator.php.html#11">App\Domain\Validators\GroupMemberValidator</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/Validators/MessageValidator.php.html#11">App\Domain\Validators\MessageValidator</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#16">App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#13">App\Domain\UseCase\Authentication\JwtManager</a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupRepository.php.html#16">App\Infrastructure\Persistence\Group\InMemoryGroupRepository</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#11">App\Infrastructure\Persistence\Repository</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Application/Handlers/HttpErrorHandler.php.html#21">App\Application\Handlers\HttpErrorHandler</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Message/InMemoryMessageRepository.php.html#12">App\Infrastructure\Persistence\Message\InMemoryMessageRepository</a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Application/Actions/ActionError.php.html#9">App\Application\Actions\ActionError</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#11">App\Domain\Objects\Group\Group</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Application/Actions/ActionPayload.php.html#9">App\Application\Actions\ActionPayload</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#13">App\Domain\Objects\Message\Message</a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Application/Handlers/ShutdownHandler.php.html#11">App\Application\Handlers\ShutdownHandler</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Application/Middleware/AuthenticationMiddleware.php.html#14">App\Application\Middleware\AuthenticationMiddleware</a></td><td class="text-right">58</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#16">App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository</a></td><td class="text-right">22</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#11">App\Infrastructure\Persistence\Repository</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Application/Handlers/HttpErrorHandler.php.html#21">App\Application\Handlers\HttpErrorHandler</a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#13">App\Domain\UseCase\Authentication\JwtManager</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupRepository.php.html#16">App\Infrastructure\Persistence\Group\InMemoryGroupRepository</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#13">App\Domain\Objects\Message\Message</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Message/InMemoryMessageRepository.php.html#12">App\Infrastructure\Persistence\Message\InMemoryMessageRepository</a></td><td class="text-right">9</td></tr>
+       <tr><td><a href="Application/Actions/ActionPayload.php.html#9">App\Application\Actions\ActionPayload</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Application/ResponseEmitter/ResponseEmitter.php.html#10">App\Application\ResponseEmitter\ResponseEmitter</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Application/Middleware/SessionMiddleware.php.html#12">App\Application\Middleware\SessionMiddleware</a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Validators/GroupMemberValidator.php.html#11">App\Domain\Validators\GroupMemberValidator</a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Validators/MessageValidator.php.html#11">App\Domain\Validators\MessageValidator</a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Application/Actions/ActionError.php.html#31"><abbr title="App\Application\Actions\ActionError::getType">getType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Actions/ActionError.php.html#42"><abbr title="App\Application\Actions\ActionError::getDescription">getDescription</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Actions/ActionPayload.php.html#38"><abbr title="App\Application\Actions\ActionPayload::getData">getData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Actions/ActionPayload.php.html#43"><abbr title="App\Application\Actions\ActionPayload::getError">getError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Actions/Authentication/LogoutAction.php.html#10"><abbr title="App\Application\Actions\Authentication\LogoutAction::action">action</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Handlers/ShutdownHandler.php.html#19"><abbr title="App\Application\Handlers\ShutdownHandler::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Handlers/ShutdownHandler.php.html#29"><abbr title="App\Application\Handlers\ShutdownHandler::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/Middleware/AuthenticationMiddleware.php.html#60"><abbr title="App\Application\Middleware\AuthenticationMiddleware::getTokenExpieredResponse">getTokenExpieredResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Application/ResponseEmitter/ResponseEmitter.php.html#15"><abbr title="App\Application\ResponseEmitter\ResponseEmitter::emit">emit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#43"><abbr title="App\Domain\Objects\Group\Group::getPhoto">getPhoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#48"><abbr title="App\Domain\Objects\Group\Group::getDescription">getDescription</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#53"><abbr title="App\Domain\Objects\Group\Group::getCreatedBy">getCreatedBy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#58"><abbr title="App\Domain\Objects\Group\Group::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/Group.php.html#63"><abbr title="App\Domain\Objects\Group\Group::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Group/GroupMember.php.html#32"><abbr title="App\Domain\Objects\Group\GroupMember::getUserId">getUserId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#41"><abbr title="App\Domain\Objects\Message\Message::getFrom">getFrom</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#46"><abbr title="App\Domain\Objects\Message\Message::getTo">getTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#61"><abbr title="App\Domain\Objects\Message\Message::getMedia">getMedia</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/Message/Message.php.html#66"><abbr title="App\Domain\Objects\Message\Message::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/User/User.php.html#70"><abbr title="App\Domain\Objects\User\User::getPhoto">getPhoto</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/User/User.php.html#75"><abbr title="App\Domain\Objects\User\User::getLastSeen">getLastSeen</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/User/User.php.html#80"><abbr title="App\Domain\Objects\User\User::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Objects/User/User.php.html#85"><abbr title="App\Domain\Objects\User\User::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/UseCase/UseCase.php.html#19"><abbr title="App\Domain\UseCase\UseCase::execInputValidations">execInputValidations</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/DB.php.html#12"><abbr title="App\Infrastructure\Persistence\DB::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/DB.php.html#18"><abbr title="App\Infrastructure\Persistence\DB::getConnection">getConnection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#58"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository::findUserGroups">findUserGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#73"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository::getByUserIdAndGroupId">getByUserIdAndGroupId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#88"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository::deleteByUserIdAndGroupId">deleteByUserIdAndGroupId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupRepository.php.html#66"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupRepository::findByUserId">findByUserId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Message/InMemoryMessageRepository.php.html#59"><abbr title="App\Infrastructure\Persistence\Message\InMemoryMessageRepository::findMessagesToGroupId">findMessagesToGroupId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#84"><abbr title="App\Infrastructure\Persistence\Repository::updateField">updateField</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#17"><abbr title="App\Domain\UseCase\Authentication\JwtManager::getPrivateKey">getPrivateKey</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#29"><abbr title="App\Domain\UseCase\Authentication\JwtManager::getTtl">getTtl</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Application/Middleware/AuthenticationMiddleware.php.html#16"><abbr title="App\Application\Middleware\AuthenticationMiddleware::process">process</abbr></a></td><td class="text-right">37%</td></tr>
+       <tr><td><a href="Application/Middleware/SessionMiddleware.php.html#17"><abbr title="App\Application\Middleware\SessionMiddleware::process">process</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/Validators/GroupMemberValidator.php.html#13"><abbr title="App\Domain\Validators\GroupMemberValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/Validators/MessageValidator.php.html#13"><abbr title="App\Domain\Validators\MessageValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Application/Actions/Action.php.html#70"><abbr title="App\Application\Actions\Action::resolveArg">resolveArg</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Application/Settings/Settings.php.html#24"><abbr title="App\Application\Settings\Settings::get">get</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Application/Handlers/HttpErrorHandler.php.html#26"><abbr title="App\Application\Handlers\HttpErrorHandler::respond">respond</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#41"><abbr title="App\Domain\UseCase\Authentication\JwtManager::decode">decode</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Domain/UseCase/User/LoginUser.php.html#24"><abbr title="App\Domain\UseCase\User\LoginUser::execute">execute</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#48"><abbr title="App\Infrastructure\Persistence\Repository::insert">insert</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/User/InMemoryUserRepository.php.html#69"><abbr title="App\Infrastructure\Persistence\User\InMemoryUserRepository::findUserOfUsername">findUserOfUsername</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Application/Handlers/ShutdownHandler.php.html#29"><abbr title="App\Application\Handlers\ShutdownHandler::__invoke">__invoke</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Application/Middleware/AuthenticationMiddleware.php.html#16"><abbr title="App\Application\Middleware\AuthenticationMiddleware::process">process</abbr></a></td><td class="text-right">39</td></tr>
+       <tr><td><a href="Application/Handlers/HttpErrorHandler.php.html#26"><abbr title="App\Application\Handlers\HttpErrorHandler::respond">respond</abbr></a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Domain/UseCase/UseCase.php.html#19"><abbr title="App\Domain\UseCase\UseCase::execInputValidations">execInputValidations</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#48"><abbr title="App\Infrastructure\Persistence\Repository::insert">insert</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Application/ResponseEmitter/ResponseEmitter.php.html#15"><abbr title="App\Application\ResponseEmitter\ResponseEmitter::emit">emit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#58"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository::findUserGroups">findUserGroups</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupMembersRepository.php.html#73"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository::getByUserIdAndGroupId">getByUserIdAndGroupId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Group/InMemoryGroupRepository.php.html#66"><abbr title="App\Infrastructure\Persistence\Group\InMemoryGroupRepository::findByUserId">findByUserId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Message/InMemoryMessageRepository.php.html#59"><abbr title="App\Infrastructure\Persistence\Message\InMemoryMessageRepository::findMessagesToGroupId">findMessagesToGroupId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/Repository.php.html#84"><abbr title="App\Infrastructure\Persistence\Repository::updateField">updateField</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Application/Settings/Settings.php.html#24"><abbr title="App\Application\Settings\Settings::get">get</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#17"><abbr title="App\Domain\UseCase\Authentication\JwtManager::getPrivateKey">getPrivateKey</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#29"><abbr title="App\Domain\UseCase\Authentication\JwtManager::getTtl">getTtl</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Infrastructure/Persistence/User/InMemoryUserRepository.php.html#69"><abbr title="App\Infrastructure\Persistence\User\InMemoryUserRepository::findUserOfUsername">findUserOfUsername</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Application/Middleware/SessionMiddleware.php.html#17"><abbr title="App\Application\Middleware\SessionMiddleware::process">process</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Validators/GroupMemberValidator.php.html#13"><abbr title="App\Domain\Validators\GroupMemberValidator::validate">validate</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Validators/MessageValidator.php.html#13"><abbr title="App\Domain\Validators\MessageValidator::validate">validate</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Application/Actions/Action.php.html#70"><abbr title="App\Application\Actions\Action::resolveArg">resolveArg</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/UseCase/Authentication/JwtManager.php.html#41"><abbr title="App\Domain\UseCase\Authentication\JwtManager::decode">decode</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/UseCase/User/LoginUser.php.html#24"><abbr title="App\Domain\UseCase\User\LoginUser::execute">execute</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHPDBG 8.4.5</a> and <a href="https://phpunit.de/">PHPUnit 9.6.22</a> at Tue Mar 25 23:27:08 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([4,0,1,0,1,0,4,1,3,5,8,28], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([32,0,0,0,3,0,3,2,1,4,3,110], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[95.65217391304348,12,"<a href=\"Application\/Actions\/Action.php.html#15\">App\\Application\\Actions\\Action<\/a>"],[83.33333333333334,6,"<a href=\"Application\/Actions\/ActionError.php.html#9\">App\\Application\\Actions\\ActionError<\/a>"],[85.71428571428571,7,"<a href=\"Application\/Actions\/ActionPayload.php.html#9\">App\\Application\\Actions\\ActionPayload<\/a>"],[90,2,"<a href=\"Application\/Actions\/Authentication\/LoginAction.php.html#10\">App\\Application\\Actions\\Authentication\\LoginAction<\/a>"],[0,1,"<a href=\"Application\/Actions\/Authentication\/LogoutAction.php.html#8\">App\\Application\\Actions\\Authentication\\LogoutAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Authentication\/RegisterAction.php.html#9\">App\\Application\\Actions\\Authentication\\RegisterAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/AddGroupMembersAction.php.html#10\">App\\Application\\Actions\\Group\\AddGroupMembersAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/CreateGroupAction.php.html#11\">App\\Application\\Actions\\Group\\CreateGroupAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/GroupAction.php.html#13\">App\\Application\\Actions\\Group\\GroupAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/ListGroupsAction.php.html#9\">App\\Application\\Actions\\Group\\ListGroupsAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/RemoveGroupMembersAction.php.html#11\">App\\Application\\Actions\\Group\\RemoveGroupMembersAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/ViewGroupAction.php.html#11\">App\\Application\\Actions\\Group\\ViewGroupAction<\/a>"],[100,2,"<a href=\"Application\/Actions\/Group\/ViewGroupMembersAction.php.html#10\">App\\Application\\Actions\\Group\\ViewGroupMembersAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/MessageAction.php.html#11\">App\\Application\\Actions\\Message\\MessageAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/SendGroupMessageAction.php.html#8\">App\\Application\\Actions\\Message\\SendGroupMessageAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/SendPrivateMessageAction.php.html#9\">App\\Application\\Actions\\Message\\SendPrivateMessageAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/ViewChatAction.php.html#8\">App\\Application\\Actions\\Message\\ViewChatAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/ViewGroupMessagesAction.php.html#9\">App\\Application\\Actions\\Message\\ViewGroupMessagesAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/ListUsersAction.php.html#9\">App\\Application\\Actions\\User\\ListUsersAction<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/UserAction.php.html#11\">App\\Application\\Actions\\User\\UserAction<\/a>"],[100,2,"<a href=\"Application\/Actions\/User\/ViewUserAction.php.html#9\">App\\Application\\Actions\\User\\ViewUserAction<\/a>"],[78.78787878787878,12,"<a href=\"Application\/Handlers\/HttpErrorHandler.php.html#21\">App\\Application\\Handlers\\HttpErrorHandler<\/a>"],[0,8,"<a href=\"Application\/Handlers\/ShutdownHandler.php.html#11\">App\\Application\\Handlers\\ShutdownHandler<\/a>"],[31.428571428571427,12,"<a href=\"Application\/Middleware\/AuthenticationMiddleware.php.html#14\">App\\Application\\Middleware\\AuthenticationMiddleware<\/a>"],[50,2,"<a href=\"Application\/Middleware\/SessionMiddleware.php.html#12\">App\\Application\\Middleware\\SessionMiddleware<\/a>"],[0,2,"<a href=\"Application\/ResponseEmitter\/ResponseEmitter.php.html#10\">App\\Application\\ResponseEmitter\\ResponseEmitter<\/a>"],[92.5925925925926,12,"<a href=\"Application\/Settings\/Settings.php.html#10\">App\\Application\\Settings\\Settings<\/a>"],[100,1,"<a href=\"Domain\/DomainException\/DomainException.php.html#9\">App\\Domain\\DomainException\\DomainException<\/a>"],[100,0,"<a href=\"Domain\/DomainException\/DomainRecordNotFoundException.php.html#7\">App\\Domain\\DomainException\\DomainRecordNotFoundException<\/a>"],[100,0,"<a href=\"Domain\/DomainException\/InvalidCredentials.php.html#5\">App\\Domain\\DomainException\\InvalidCredentials<\/a>"],[100,0,"<a href=\"Domain\/DomainException\/InvalidInput.php.html#5\">App\\Domain\\DomainException\\InvalidInput<\/a>"],[100,0,"<a href=\"Domain\/DomainException\/InvalidTypeError.php.html#5\">App\\Domain\\DomainException\\InvalidTypeError<\/a>"],[100,0,"<a href=\"Domain\/DomainException\/RegisterError.php.html#5\">App\\Domain\\DomainException\\RegisterError<\/a>"],[100,2,"<a href=\"Domain\/Objects\/DomainObject.php.html#5\">App\\Domain\\Objects\\DomainObject<\/a>"],[83.87096774193549,9,"<a href=\"Domain\/Objects\/Group\/Group.php.html#11\">App\\Domain\\Objects\\Group\\Group<\/a>"],[95.65217391304348,8,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#12\">App\\Domain\\Objects\\Group\\GroupMember<\/a>"],[87.5,10,"<a href=\"Domain\/Objects\/Message\/Message.php.html#13\">App\\Domain\\Objects\\Message\\Message<\/a>"],[90.69767441860465,11,"<a href=\"Domain\/Objects\/User\/User.php.html#12\">App\\Domain\\Objects\\User\\User<\/a>"],[100,0,"<a href=\"Domain\/Objects\/User\/UserNotFoundException.php.html#9\">App\\Domain\\Objects\\User\\UserNotFoundException<\/a>"],[65.38461538461539,8,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#13\">App\\Domain\\UseCase\\Authentication\\JwtManager<\/a>"],[100,3,"<a href=\"Domain\/UseCase\/Group\/AddGroupMember.php.html#10\">App\\Domain\\UseCase\\Group\\AddGroupMember<\/a>"],[100,3,"<a href=\"Domain\/UseCase\/Group\/CreateGroup.php.html#11\">App\\Domain\\UseCase\\Group\\CreateGroup<\/a>"],[100,3,"<a href=\"Domain\/UseCase\/Group\/RemoveGroupMember.php.html#10\">App\\Domain\\UseCase\\Group\\RemoveGroupMember<\/a>"],[96,5,"<a href=\"Domain\/UseCase\/Message\/SendMessage.php.html#12\">App\\Domain\\UseCase\\Message\\SendMessage<\/a>"],[16.666666666666664,4,"<a href=\"Domain\/UseCase\/UseCase.php.html#8\">App\\Domain\\UseCase\\UseCase<\/a>"],[100,6,"<a href=\"Domain\/UseCase\/User\/CreateUser.php.html#16\">App\\Domain\\UseCase\\User\\CreateUser<\/a>"],[91.66666666666666,4,"<a href=\"Domain\/UseCase\/User\/LoginUser.php.html#12\">App\\Domain\\UseCase\\User\\LoginUser<\/a>"],[50,2,"<a href=\"Domain\/Validators\/GroupMemberValidator.php.html#11\">App\\Domain\\Validators\\GroupMemberValidator<\/a>"],[50,2,"<a href=\"Domain\/Validators\/MessageValidator.php.html#11\">App\\Domain\\Validators\\MessageValidator<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/DB.php.html#7\">App\\Infrastructure\\Persistence\\DB<\/a>"],[50,10,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#16\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository<\/a>"],[75,9,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#16\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository<\/a>"],[81.48148148148148,9,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#12\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository<\/a>"],[75,16,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#11\">App\\Infrastructure\\Persistence\\Repository<\/a>"],[96.875,11,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#13\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Application\/Actions\/Action.php.html#25\">App\\Application\\Actions\\Action::__construct<\/a>"],[100,2,"<a href=\"Application\/Actions\/Action.php.html#34\">App\\Application\\Actions\\Action::__invoke<\/a>"],[100,1,"<a href=\"Application\/Actions\/Action.php.html#47\">App\\Application\\Actions\\Action::getUserId<\/a>"],[100,0,"<a href=\"Application\/Actions\/Action.php.html#56\">App\\Application\\Actions\\Action::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Action.php.html#61\">App\\Application\\Actions\\Action::getFormData<\/a>"],[66.66666666666666,2,"<a href=\"Application\/Actions\/Action.php.html#70\">App\\Application\\Actions\\Action::resolveArg<\/a>"],[100,1,"<a href=\"Application\/Actions\/Action.php.html#82\">App\\Application\\Actions\\Action::respondWithData<\/a>"],[100,2,"<a href=\"Application\/Actions\/Action.php.html#89\">App\\Application\\Actions\\Action::respond<\/a>"],[100,2,"<a href=\"Application\/Actions\/Action.php.html#103\">App\\Application\\Actions\\Action::validateUserIsLoggedIn<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionError.php.html#25\">App\\Application\\Actions\\ActionError::__construct<\/a>"],[0,1,"<a href=\"Application\/Actions\/ActionError.php.html#31\">App\\Application\\Actions\\ActionError::getType<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionError.php.html#36\">App\\Application\\Actions\\ActionError::setType<\/a>"],[0,1,"<a href=\"Application\/Actions\/ActionError.php.html#42\">App\\Application\\Actions\\ActionError::getDescription<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionError.php.html#47\">App\\Application\\Actions\\ActionError::setDescription<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionError.php.html#53\">App\\Application\\Actions\\ActionError::jsonSerialize<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionPayload.php.html#20\">App\\Application\\Actions\\ActionPayload::__construct<\/a>"],[100,1,"<a href=\"Application\/Actions\/ActionPayload.php.html#30\">App\\Application\\Actions\\ActionPayload::getStatusCode<\/a>"],[0,1,"<a href=\"Application\/Actions\/ActionPayload.php.html#38\">App\\Application\\Actions\\ActionPayload::getData<\/a>"],[0,1,"<a href=\"Application\/Actions\/ActionPayload.php.html#43\">App\\Application\\Actions\\ActionPayload::getError<\/a>"],[100,3,"<a href=\"Application\/Actions\/ActionPayload.php.html#48\">App\\Application\\Actions\\ActionPayload::jsonSerialize<\/a>"],[90,2,"<a href=\"Application\/Actions\/Authentication\/LoginAction.php.html#12\">App\\Application\\Actions\\Authentication\\LoginAction::action<\/a>"],[0,1,"<a href=\"Application\/Actions\/Authentication\/LogoutAction.php.html#10\">App\\Application\\Actions\\Authentication\\LogoutAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Authentication\/RegisterAction.php.html#11\">App\\Application\\Actions\\Authentication\\RegisterAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/AddGroupMembersAction.php.html#15\">App\\Application\\Actions\\Group\\AddGroupMembersAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/CreateGroupAction.php.html#16\">App\\Application\\Actions\\Group\\CreateGroupAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/GroupAction.php.html#18\">App\\Application\\Actions\\Group\\GroupAction::__construct<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/ListGroupsAction.php.html#14\">App\\Application\\Actions\\Group\\ListGroupsAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/RemoveGroupMembersAction.php.html#16\">App\\Application\\Actions\\Group\\RemoveGroupMembersAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Group\/ViewGroupAction.php.html#16\">App\\Application\\Actions\\Group\\ViewGroupAction::action<\/a>"],[100,2,"<a href=\"Application\/Actions\/Group\/ViewGroupMembersAction.php.html#15\">App\\Application\\Actions\\Group\\ViewGroupMembersAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/MessageAction.php.html#15\">App\\Application\\Actions\\Message\\MessageAction::__construct<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/SendGroupMessageAction.php.html#10\">App\\Application\\Actions\\Message\\SendGroupMessageAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/SendPrivateMessageAction.php.html#11\">App\\Application\\Actions\\Message\\SendPrivateMessageAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/ViewChatAction.php.html#10\">App\\Application\\Actions\\Message\\ViewChatAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/Message\/ViewGroupMessagesAction.php.html#14\">App\\Application\\Actions\\Message\\ViewGroupMessagesAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/ListUsersAction.php.html#14\">App\\Application\\Actions\\User\\ListUsersAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/UserAction.php.html#15\">App\\Application\\Actions\\User\\UserAction::__construct<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/ViewUserAction.php.html#14\">App\\Application\\Actions\\User\\ViewUserAction::action<\/a>"],[100,1,"<a href=\"Application\/Actions\/User\/ViewUserAction.php.html#28\">App\\Application\\Actions\\User\\ViewUserAction::sanitiseUserData<\/a>"],[78.78787878787878,12,"<a href=\"Application\/Handlers\/HttpErrorHandler.php.html#26\">App\\Application\\Handlers\\HttpErrorHandler::respond<\/a>"],[0,1,"<a href=\"Application\/Handlers\/ShutdownHandler.php.html#19\">App\\Application\\Handlers\\ShutdownHandler::__construct<\/a>"],[0,7,"<a href=\"Application\/Handlers\/ShutdownHandler.php.html#29\">App\\Application\\Handlers\\ShutdownHandler::__invoke<\/a>"],[37.93103448275862,11,"<a href=\"Application\/Middleware\/AuthenticationMiddleware.php.html#16\">App\\Application\\Middleware\\AuthenticationMiddleware::process<\/a>"],[0,1,"<a href=\"Application\/Middleware\/AuthenticationMiddleware.php.html#60\">App\\Application\\Middleware\\AuthenticationMiddleware::getTokenExpieredResponse<\/a>"],[50,2,"<a href=\"Application\/Middleware\/SessionMiddleware.php.html#17\">App\\Application\\Middleware\\SessionMiddleware::process<\/a>"],[0,2,"<a href=\"Application\/ResponseEmitter\/ResponseEmitter.php.html#15\">App\\Application\\ResponseEmitter\\ResponseEmitter::emit<\/a>"],[100,1,"<a href=\"Application\/Settings\/Settings.php.html#14\">App\\Application\\Settings\\Settings::__construct<\/a>"],[66.66666666666666,4,"<a href=\"Application\/Settings\/Settings.php.html#24\">App\\Application\\Settings\\Settings::get<\/a>"],[93.33333333333333,5,"<a href=\"Application\/Settings\/Settings.php.html#32\">App\\Application\\Settings\\Settings::loadConfig<\/a>"],[100,2,"<a href=\"Application\/Settings\/Settings.php.html#58\">App\\Application\\Settings\\Settings::extractYml<\/a>"],[100,1,"<a href=\"Domain\/DomainException\/DomainException.php.html#11\">App\\Domain\\DomainException\\DomainException::__construct<\/a>"],[100,1,"<a href=\"Domain\/Objects\/DomainObject.php.html#9\">App\\Domain\\Objects\\DomainObject::setId<\/a>"],[100,1,"<a href=\"Domain\/Objects\/DomainObject.php.html#14\">App\\Domain\\Objects\\DomainObject::getId<\/a>"],[100,0,"<a href=\"Domain\/Objects\/DomainObject.php.html#18\">App\\Domain\\Objects\\DomainObject::jsonSerialize<\/a>"],[100,0,"<a href=\"Domain\/Objects\/DomainObject.php.html#19\">App\\Domain\\Objects\\DomainObject::jsonDeserialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#20\">App\\Domain\\Objects\\Group\\Group::__construct<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#38\">App\\Domain\\Objects\\Group\\Group::getName<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#43\">App\\Domain\\Objects\\Group\\Group::getPhoto<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#48\">App\\Domain\\Objects\\Group\\Group::getDescription<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#53\">App\\Domain\\Objects\\Group\\Group::getCreatedBy<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#58\">App\\Domain\\Objects\\Group\\Group::getCreatedAt<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#63\">App\\Domain\\Objects\\Group\\Group::getUpdatedAt<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#68\">App\\Domain\\Objects\\Group\\Group::jsonSerialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/Group.php.html#81\">App\\Domain\\Objects\\Group\\Group::jsonDeserialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#19\">App\\Domain\\Objects\\Group\\GroupMember::__construct<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#32\">App\\Domain\\Objects\\Group\\GroupMember::getUserId<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#37\">App\\Domain\\Objects\\Group\\GroupMember::getGroupId<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#42\">App\\Domain\\Objects\\Group\\GroupMember::getRole<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#47\">App\\Domain\\Objects\\Group\\GroupMember::setUserData<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#52\">App\\Domain\\Objects\\Group\\GroupMember::getUserData<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#57\">App\\Domain\\Objects\\Group\\GroupMember::jsonSerialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Group\/GroupMember.php.html#68\">App\\Domain\\Objects\\Group\\GroupMember::jsonDeserialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#22\">App\\Domain\\Objects\\Message\\Message::__construct<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#41\">App\\Domain\\Objects\\Message\\Message::getFrom<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#46\">App\\Domain\\Objects\\Message\\Message::getTo<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#51\">App\\Domain\\Objects\\Message\\Message::getMessageType<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#56\">App\\Domain\\Objects\\Message\\Message::getMessage<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#61\">App\\Domain\\Objects\\Message\\Message::getMedia<\/a>"],[0,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#66\">App\\Domain\\Objects\\Message\\Message::getCreatedAt<\/a>"],[100,1,"<a href=\"Domain\/Objects\/Message\/Message.php.html#71\">App\\Domain\\Objects\\Message\\Message::jsonSerialize<\/a>"],[100,2,"<a href=\"Domain\/Objects\/Message\/Message.php.html#84\">App\\Domain\\Objects\\Message\\Message::jsonDeserialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#26\">App\\Domain\\Objects\\User\\User::__construct<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#50\">App\\Domain\\Objects\\User\\User::getUsername<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#55\">App\\Domain\\Objects\\User\\User::getPassword<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#60\">App\\Domain\\Objects\\User\\User::getFirstName<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#65\">App\\Domain\\Objects\\User\\User::getLastName<\/a>"],[0,1,"<a href=\"Domain\/Objects\/User\/User.php.html#70\">App\\Domain\\Objects\\User\\User::getPhoto<\/a>"],[0,1,"<a href=\"Domain\/Objects\/User\/User.php.html#75\">App\\Domain\\Objects\\User\\User::getLastSeen<\/a>"],[0,1,"<a href=\"Domain\/Objects\/User\/User.php.html#80\">App\\Domain\\Objects\\User\\User::getCreatedAt<\/a>"],[0,1,"<a href=\"Domain\/Objects\/User\/User.php.html#85\">App\\Domain\\Objects\\User\\User::getUpdatedAt<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#90\">App\\Domain\\Objects\\User\\User::jsonSerialize<\/a>"],[100,1,"<a href=\"Domain\/Objects\/User\/User.php.html#107\">App\\Domain\\Objects\\User\\User::jsonDeserialize<\/a>"],[33.33333333333333,2,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#17\">App\\Domain\\UseCase\\Authentication\\JwtManager::getPrivateKey<\/a>"],[33.33333333333333,2,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#29\">App\\Domain\\UseCase\\Authentication\\JwtManager::getTtl<\/a>"],[83.33333333333334,2,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#41\">App\\Domain\\UseCase\\Authentication\\JwtManager::decode<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#52\">App\\Domain\\UseCase\\Authentication\\JwtManager::encode<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Authentication\/JwtManager.php.html#58\">App\\Domain\\UseCase\\Authentication\\JwtManager::getPayload<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/AddGroupMember.php.html#15\">App\\Domain\\UseCase\\Group\\AddGroupMember::__construct<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/AddGroupMember.php.html#22\">App\\Domain\\UseCase\\Group\\AddGroupMember::execute<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/AddGroupMember.php.html#37\">App\\Domain\\UseCase\\Group\\AddGroupMember::validateData<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/CreateGroup.php.html#16\">App\\Domain\\UseCase\\Group\\CreateGroup::__construct<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/CreateGroup.php.html#23\">App\\Domain\\UseCase\\Group\\CreateGroup::execute<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/CreateGroup.php.html#42\">App\\Domain\\UseCase\\Group\\CreateGroup::validateData<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/RemoveGroupMember.php.html#15\">App\\Domain\\UseCase\\Group\\RemoveGroupMember::__construct<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/RemoveGroupMember.php.html#22\">App\\Domain\\UseCase\\Group\\RemoveGroupMember::execute<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Group\/RemoveGroupMember.php.html#30\">App\\Domain\\UseCase\\Group\\RemoveGroupMember::validateData<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Message\/SendMessage.php.html#17\">App\\Domain\\UseCase\\Message\\SendMessage::__construct<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/Message\/SendMessage.php.html#24\">App\\Domain\\UseCase\\Message\\SendMessage::execute<\/a>"],[90,3,"<a href=\"Domain\/UseCase\/Message\/SendMessage.php.html#43\">App\\Domain\\UseCase\\Message\\SendMessage::validateData<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/UseCase.php.html#10\">App\\Domain\\UseCase\\UseCase::__construct<\/a>"],[100,0,"<a href=\"Domain\/UseCase\/UseCase.php.html#15\">App\\Domain\\UseCase\\UseCase::execute<\/a>"],[100,0,"<a href=\"Domain\/UseCase\/UseCase.php.html#17\">App\\Domain\\UseCase\\UseCase::validateData<\/a>"],[0,3,"<a href=\"Domain\/UseCase\/UseCase.php.html#19\">App\\Domain\\UseCase\\UseCase::execInputValidations<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/User\/CreateUser.php.html#21\">App\\Domain\\UseCase\\User\\CreateUser::__construct<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/User\/CreateUser.php.html#28\">App\\Domain\\UseCase\\User\\CreateUser::execute<\/a>"],[100,2,"<a href=\"Domain\/UseCase\/User\/CreateUser.php.html#52\">App\\Domain\\UseCase\\User\\CreateUser::validateData<\/a>"],[100,2,"<a href=\"Domain\/UseCase\/User\/CreateUser.php.html#87\">App\\Domain\\UseCase\\User\\CreateUser::isUsernameTaken<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/User\/LoginUser.php.html#17\">App\\Domain\\UseCase\\User\\LoginUser::__construct<\/a>"],[85.71428571428571,2,"<a href=\"Domain\/UseCase\/User\/LoginUser.php.html#24\">App\\Domain\\UseCase\\User\\LoginUser::execute<\/a>"],[100,1,"<a href=\"Domain\/UseCase\/User\/LoginUser.php.html#36\">App\\Domain\\UseCase\\User\\LoginUser::validateData<\/a>"],[50,2,"<a href=\"Domain\/Validators\/GroupMemberValidator.php.html#13\">App\\Domain\\Validators\\GroupMemberValidator::validate<\/a>"],[50,2,"<a href=\"Domain\/Validators\/MessageValidator.php.html#13\">App\\Domain\\Validators\\MessageValidator::validate<\/a>"],[0,1,"<a href=\"Infrastructure\/Persistence\/DB.php.html#12\">App\\Infrastructure\\Persistence\\DB::__construct<\/a>"],[0,1,"<a href=\"Infrastructure\/Persistence\/DB.php.html#18\">App\\Infrastructure\\Persistence\\DB::getConnection<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#18\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::__construct<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#24\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::getFields<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#34\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::getTableName<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#39\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::findGroupMembers<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#58\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::findUserGroups<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#73\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::getByUserIdAndGroupId<\/a>"],[0,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupMembersRepository.php.html#88\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupMembersRepository::deleteByUserIdAndGroupId<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#18\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::__construct<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#24\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::getFields<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#37\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::getTableName<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#42\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::findAll<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#52\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::findById<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/Group\/InMemoryGroupRepository.php.html#66\">App\\Infrastructure\\Persistence\\Group\\InMemoryGroupRepository::findByUserId<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#14\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::__construct<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#20\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::getFields<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#33\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::getTableName<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#38\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::findAll<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#48\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::findMessagesFromToId<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/Message\/InMemoryMessageRepository.php.html#59\">App\\Infrastructure\\Persistence\\Message\\InMemoryMessageRepository::findMessagesToGroupId<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#17\">App\\Infrastructure\\Persistence\\Repository::__construct<\/a>"],[100,0,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#25\">App\\Infrastructure\\Persistence\\Repository::getTableName<\/a>"],[100,0,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#26\">App\\Infrastructure\\Persistence\\Repository::getFields<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#28\">App\\Infrastructure\\Persistence\\Repository::getCreateTableSchema<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#43\">App\\Infrastructure\\Persistence\\Repository::createTable<\/a>"],[85.71428571428571,6,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#48\">App\\Infrastructure\\Persistence\\Repository::insert<\/a>"],[0,2,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#84\">App\\Infrastructure\\Persistence\\Repository::updateField<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#101\">App\\Infrastructure\\Persistence\\Repository::shouldIgnoreField<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/Repository.php.html#106\">App\\Infrastructure\\Persistence\\Repository::getDB<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#15\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::__construct<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#21\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::getFields<\/a>"],[100,1,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#37\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::getTableName<\/a>"],[100,2,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#45\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::findAll<\/a>"],[100,3,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#58\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::findUserOfId<\/a>"],[85.71428571428571,3,"<a href=\"Infrastructure\/Persistence\/User\/InMemoryUserRepository.php.html#69\">App\\Infrastructure\\Persistence\\User\\InMemoryUserRepository::findUserOfUsername<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
