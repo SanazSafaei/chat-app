@@ -33,7 +33,7 @@ class TestCase extends PHPUnit_TestCase
 
         // Set up settings
         $settings = require __DIR__ . '/../app/settings.php';
-        $settings($containerBuilder);
+        $settings($containerBuilder, 'test');
 
         // Set up dependencies
         $dependencies = require __DIR__ . '/../app/dependencies.php';
