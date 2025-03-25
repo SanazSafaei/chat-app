@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Persistence;
 
 use App\Domain\Objects\DomainObject;
+use DI\Attribute\Inject;
 use Exception;
 use PDO;
 use Slim\Logger;
@@ -12,7 +13,8 @@ abstract class Repository
     protected PDO $PDO;
     private Logger $logger;
 
-    public function __construct(?DBInterface $DB = null)
+    #[Inject (['DB' => DBInterface::class])]
+    public function __construct(DBInterface $DB)
     {
         $this->logger = new Logger();
         $this->PDO = ($this->getDB($DB))->getConnection();

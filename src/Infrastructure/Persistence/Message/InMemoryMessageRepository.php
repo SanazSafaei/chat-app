@@ -11,7 +11,7 @@ use App\Infrastructure\Persistence\Repository;
 
 class InMemoryMessageRepository extends Repository implements MessageRepository
 {
-    public function __construct(?DBInterface $DB = null)
+    public function __construct(DBInterface $DB)
     {
         parent::__construct($DB);
         $this->createTable();

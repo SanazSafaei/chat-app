@@ -15,7 +15,7 @@ use PDO;
 
 class InMemoryGroupMembersRepository extends Repository implements GroupMemberRepository
 {
-    public function __construct(?DBInterface $DB = null)
+    public function __construct(DBInterface $DB)
     {
         parent::__construct($DB);
         $this->createTable();

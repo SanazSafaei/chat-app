@@ -7,11 +7,11 @@ use App\Application\Settings\SettingsInterface;
 use DI\ContainerBuilder;
 use Monolog\Logger;
 
-return function (ContainerBuilder $containerBuilder) {
+return function (ContainerBuilder $containerBuilder, string $mode = 'prod') {
 
     // Global Settings Object
     $containerBuilder->addDefinitions([
-        SettingsInterface::class => function () {
+        SettingsInterface::class => function () use ($mode) {
             return new Settings([
                 'displayErrorDetails' => true, // Should be set to false in production
                 'logError'            => true,
@@ -21,6 +21,7 @@ return function (ContainerBuilder $containerBuilder) {
                     'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
                     'level' => Logger::DEBUG,
                 ],
+                'mode' => $mode
             ]);
         }
     ]);

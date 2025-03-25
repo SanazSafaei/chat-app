@@ -12,7 +12,7 @@ use App\Infrastructure\Persistence\Repository;
 
 class InMemoryUserRepository extends Repository implements UserRepository
 {
-    public function __construct(?DBInterface $DB = null)
+    public function __construct(DBInterface $DB)
     {
         parent::__construct($DB);
         $this->createTable();
