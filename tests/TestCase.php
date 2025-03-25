@@ -74,7 +74,7 @@ class TestCase extends PHPUnit_TestCase
         string $path,
         array $headers = ['HTTP_ACCEPT' => 'application/json'],
         array $cookies = [],
-        array $serverParams = []
+        array $serverParams = ['HTTP_HOST' => 'localhost:8080']
     ): Request {
         $uri = new Uri('', '', 80, $path);
         $handle = fopen('php://temp', 'w+');
@@ -84,6 +84,8 @@ class TestCase extends PHPUnit_TestCase
         foreach ($headers as $name => $value) {
             $h->addHeader($name, $value);
         }
+
+        $_SERVER['HTTP_HOST'] = 'localhost:8080';
 
         return new SlimRequest($method, $uri, $h, $cookies, $serverParams, $stream);
     }
