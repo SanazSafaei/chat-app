@@ -4,7 +4,6 @@ namespace App\Domain\UseCase\Message;
 
 use App\Domain\Objects\Message\Message;
 use App\Domain\Objects\Message\MessageRepository;
-use App\Infrastructure\Persistence\Message\InMemoryMessageRepository;
 use DateTime;
 use Exception;
 use Webmozart\Assert\Assert;
