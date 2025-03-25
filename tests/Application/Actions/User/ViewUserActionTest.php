@@ -66,7 +66,6 @@ class ViewUserActionTest extends TestCase
         /** @var Container $container */
         $container = $app->getContainer();
 
-//        $request = $this->createRequest('GET', '/users/1');
         $token = JwtManager::encode(JwtManager::getPayload(1, 'sanazz'));
         $request = $this->createRequest('GET', '/users/1')->withHeader('Authorization', 'Bearer ' . $token);
 
