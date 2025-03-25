@@ -2,6 +2,8 @@
 
 namespace App\Domain\UseCase\User;
 
+use App\Domain\DomainException\InvalidCredentials;
+use App\Domain\Objects\User\UserRepository;
 use App\Domain\UseCase\Authentication\JwtManager;
 use App\Domain\UseCase\UseCase;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
@@ -10,21 +12,23 @@ use Webmozart\Assert\Assert;
 class LoginUser extends UseCase
 {
     private array $userData;
+    private UserRepository $userRepository;
 
-    public function __construct(array $userData)
+    public function __construct(array $userData, UserRepository $userRepository)
     {
         $this->userData = $userData;
+        $this->userRepository = $userRepository;
         parent::__construct();
     }
 
     public function execute(): array
     {
-        $user = (new InMemoryUserRepository())->findUserOfUsername($this->userData['username']);
+        $user = $this->userRepository->findUserOfUsername($this->userData['username']);
         $isVerified = password_verify($this->userData['password'], $user->getPassword());
         if (!$isVerified) {
-            throw new \Exception('Invalid credentials.');
+            throw new InvalidCredentials('Invalid credentials.');
         }
-        (new InMemoryUserRepository())->updateField('last_seen', (new \DateTime())->format('Y-m-d H:i:s'), $user->getId());
+        $this->userRepository->updateField('last_seen', (new \DateTime())->format('Y-m-d H:i:s'), $user->getId());
         $token = JwtManager::encode(JwtManager::getPayload($user->getId(), $user->getUsername()));
         return [$user, $token];
     }
