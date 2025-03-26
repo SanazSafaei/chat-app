@@ -17,9 +17,10 @@ This is not the final version of the application. To ensure better performance a
 - **API Caching**: Implementing caching mechanisms to improve response times.
 - **Database Optimization**: Adding indexing to frequently accessed tables, such as `messages` and `users`, to enhance query performance.
 - **Use a more robust ORM**: Switching to **Doctrine** for better database management.
-- **Admin panel**: Add an admin panel for managing users and reported users
+- **Admin Panel**: Add an admin panel for managing users and handling reported users.
+- **Notifications**: Implement notification routes and real-time user notifications.
 
- ## Database Schemas and Routes
+## Database Schemas and Routes
 An Overview of db schemas and routes and todo lists for expanding project:
 ![Chat Application Logo](ReadMeContent/chat-application-diagram.png)
 
@@ -56,4 +57,5 @@ Run this command in the application directory to run the test suite
 
 ```bash
 composer test
+Result: OK (53 tests, 84 assertions)
 ```
