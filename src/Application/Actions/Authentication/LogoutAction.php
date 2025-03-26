@@ -9,8 +9,8 @@ class LogoutAction extends Action
 {
     protected function action(): Response
     {
-        $this->request->withHeader('Authorization', '');
-        $this->request->withHeader('Cookie', '');
+        $this->response->withHeader('Authorization', '');
+        $this->response->withHeader('Cookie', '');
         return $this->response->withStatus(200);
     }
 }
