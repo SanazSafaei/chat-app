@@ -1,42 +1,56 @@
-# Slim Framework 4 Skeleton Application
+# Chat Application
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+This is a chat application built using **Slim Framework 4**. It includes the following features:
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
+- **User Authentication**
+- **Private Messaging**
+- **Group Messaging**
+- **Media Uploads**
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+## Future Improvements
 
-## Install the Application
+This is not the final version of the application. To ensure better performance and scalability under high loads, the following enhancements are recommended:
 
-Run this command from the directory in which you want to install your new Slim Framework application. You will require PHP 7.4 or newer.
+- **Use a more robust ORM**: Switching to **Doctrine** for better database management.
+- **Reliable Database**: Utilizing **MySQL** instead of the default database.
+- **Cloud Storage**: Storing media files on **AWS S3** for better scalability.
+- **API Caching**: Implementing caching mechanisms to improve response times.
+- **Database Optimization**: Adding indexing to frequently accessed tables, such as `messages` and `message_views`, to enhance query performance.
+- **Real-time Communication**: Replacing HTTP-based messaging with **WebSockets** for a seamless chat experience.
+- **Admin panel**: Add an admin panel for managing users and reported users
 
-```bash
-composer create-project slim/slim-skeleton [my-app-name]
+### An Overview of db schemas and routes and todo lists for expanding project:
+![Chat Application Logo](ReadMeContent/chat-application-diagram.png)
+
+### You can load Postman Collection of application result with this file:
+```
+./ReadMeContent/Chat-app.postman_collection.json
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writable.
+### Install the Application
 
 To run the application in development, you can run these commands 
 
 ```bash
-cd [my-app-name]
-composer start
+cd Chat-Application
+composer install
 ```
 
 Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
 ```bash
-cd [my-app-name]
+cd Chat-Application
 docker-compose up -d
 ```
 After that, open `http://localhost:8080` in your browser.
+
+### You can see test coverage result via this file:
+```
+https://github.com/SanazSafaei/chat-app/blob/main/phpunit/html-coverage/index.html
+```
+![Chat Application Logo](ReadMeContent/test-coverage-result.png)
 
 Run this command in the application directory to run the test suite
 
 ```bash
 composer test
 ```
-
-That's it! Now go build something cool.
