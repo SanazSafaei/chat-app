@@ -9,12 +9,14 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface as Middleware;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpUnauthorizedException;
+use Slim\Logger;
 use Slim\Psr7\Response;
 
 class AuthenticationMiddleware implements Middleware
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $logger = new Logger();
 
         if ($request->getUri()->getPath() === '/auth/login' || $request->getUri()->getPath() === '/auth/register') {
             return $handler->handle($request);
@@ -28,12 +30,7 @@ class AuthenticationMiddleware implements Middleware
                     $decoded = JwtManager::decode($jwt);
                     $request = $request->withAttribute('token', $decoded);
                 } catch (Exception $e) {
-                    if ($e->getMessage() == 'Expired token') {
-                        return $this->getTokenExpieredResponse();
-                    }
-                    $response = (new Response(401));
-                    $response->getBody()->write('Unauthorized');
-                    return $response;
+                    return $this->getTokenExpieredResponse();
                 }
             }
         } elseif ($request->hasHeader('Cookie')) {
@@ -45,12 +42,7 @@ class AuthenticationMiddleware implements Middleware
                     $decoded = JwtManager::decode($jwt);
                     $request = $request->withAttribute('token', $decoded);
                 } catch (Exception $e) {
-                    if ($e->getMessage() == 'Expired token') {
-                        return $this->getTokenExpieredResponse();
-                    }
-                    $logger = new \slim\Logger();
-                    $logger->log('info', $e->getMessage());
-                    throw new HttpUnauthorizedException($request);
+                    return $this->getTokenExpieredResponse();
                 }
             }
         }
@@ -61,9 +53,8 @@ class AuthenticationMiddleware implements Middleware
     {
         $response = (new Response());
         return $response
-            ->withHeader('Location', 'http://' . $_SERVER['HTTP_HOST'] . '/aut/login')
             ->withHeader('Authorization', '')
             ->withHeader('set-cookie', '')
-            ->withStatus(302);
+            ->withStatus(400);
     }
 }
