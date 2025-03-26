@@ -8,13 +8,22 @@ use App\Domain\Objects\Group\Group;
 use App\Infrastructure\Persistence\Group\InMemoryGroupRepository;
 use DI\NotFoundException;
 use PHPUnit\Framework\TestCase;
+use Slim\Logger;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Tests\Infrastructure\Persistence\FakeDB;
+use function FastRoute\cachedDispatcher;
 
 class InMemoryGroupRepositoryTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        (new FilesystemAdapter())->reset();
+    }
     public function tearDown(): void
     {
         (new FakeDB())->deleteDB();
+        (new FilesystemAdapter())->reset();
         parent::tearDown();
     }
 
@@ -49,8 +58,13 @@ class InMemoryGroupRepositoryTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $repository = new InMemoryGroupRepository(new FakeDB());
-        $repository->findById(1);
+        (new FakeDB())->deleteDB();
+        $repository = (new InMemoryGroupRepository(new FakeDB()));
+        $repository->resetCacheKeys('id', 1);
+        (new FilesystemAdapter())->reset();
+        $t = $repository->findById(1);
+        $logger = new Logger();
+        $logger->log('info', 'this ----> '.$t->getId());
     }
 
     public function testInsertGroup()

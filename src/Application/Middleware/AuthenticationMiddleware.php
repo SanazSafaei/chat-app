@@ -52,6 +52,7 @@ class AuthenticationMiddleware implements Middleware
     public function getTokenExpieredResponse(): ResponseInterface|\Psr\Http\Message\MessageInterface|Response
     {
         $response = (new Response());
+        $response->getBody()->write('Unauthorized.');
         return $response
             ->withHeader('Authorization', '')
             ->withHeader('set-cookie', '')

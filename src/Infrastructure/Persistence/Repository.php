@@ -6,13 +6,18 @@ use App\Domain\Objects\DomainObject;
 use DI\Attribute\Inject;
 use Exception;
 use PDO;
+use Psr\Cache\InvalidArgumentException;
 use Slim\Logger;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 abstract class Repository
 {
     protected PDO $PDO;
-    private Logger $logger;
+    protected Logger $logger;
     protected DBInterface $db;
+
+    public const int CACHE_TTL = 5 * 60; // 5 minute cache
+    protected FilesystemAdapter $cache;
 
     #[Inject(['DB' => DBInterface::class])]
     public function __construct(DBInterface $DB)
@@ -20,10 +25,17 @@ abstract class Repository
         $this->db = $DB;
         $this->logger = new Logger();
         $this->PDO = ($this->getDB($DB))->getConnection();
+        $this->cache = new FilesystemAdapter();
     }
 
     abstract public function getTableName(): string;
     abstract public function getFields(): array;
+
+    public function getCacheKeys(): array
+    {
+        //map of $field => $key
+        return [];
+    }
 
     public function getCreateTableSchema(): string
     {
@@ -97,13 +109,25 @@ abstract class Repository
         if (!$result) {
             throw new Exception('DB is not available');
         }
+        $this->resetCacheKeys($field, $value);
     }
 
-    /**
-     * @param int|string $fieldName
-     * @param mixed $fieldType
-     * @return bool
-     */
+    public function resetCacheKeys($field, $value): void
+    {
+        $cache = new FilesystemAdapter();
+        $cacheKeys = $this->getCacheKeys();
+        if (isset($cacheKeys[$field])) {
+            $fullNameCacheKey = $cacheKeys[$field]. $value;
+            try {
+                $cache->deleteItem($fullNameCacheKey);
+                $cache->delete($fullNameCacheKey);
+                $this->logger->log('info', "Cache of $field with $value deleted.");
+            } catch (InvalidArgumentException $exception) {
+
+            }
+        }
+    }
+
     public function shouldIgnoreField(int|string $fieldName, mixed $fieldType): bool
     {
         return $fieldName == 'id' && $fieldType == 'INTEGER PRIMARY KEY AUTOINCREMENT';
