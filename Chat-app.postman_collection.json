@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "4b6fe189-b44c-46f3-943f-71736089fa96",
+		"name": "Chat app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18280808"
+	},
+	"item": [
+		{
+			"name": "Regist",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"sanaz4\",\n    \"password\": \"As12345678!\",\n    \"email\": \"s@y.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"sanaz3\",\n    \"password\": \"As12345678!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Users List",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/users"
+			},
+			"response": []
+		},
+		{
+			"name": "User View",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Private chat view",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"hello?\",\n    \"media\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/users/1/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "View Private Chat",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/users/1/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "Groups List",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/groups"
+			},
+			"response": []
+		},
+		{
+			"name": "View Group Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/groups/1"
+			},
+			"response": []
+		},
+		{
+			"name": "New Group",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"group3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/groups"
+			},
+			"response": []
+		},
+		{
+			"name": "Group Members",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/groups/1/members"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Group Member",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/groups/1/members"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Member",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/groups/8/members"
+			},
+			"response": []
+		},
+		{
+			"name": "View Group Messages",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/groups/1/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Group Messages",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"hello group!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/groups/1/messages"
+			},
+			"response": []
+		},
+		{
+			"name": "View Media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Content",
+							"type": "file",
+							"src": "_.jpeg"
+						},
+						{
+							"key": "destination_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "private_message",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/media/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Media Upload",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Content",
+							"type": "file",
+							"src": "_.jpeg"
+						},
+						{
+							"key": "destination_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "private_message",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/media/upload"
+			},
+			"response": []
+		}
+	]
+}
