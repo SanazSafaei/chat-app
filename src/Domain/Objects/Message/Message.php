@@ -58,7 +58,7 @@ class Message extends DomainObject implements JsonSerializable
         return $this->message;
     }
 
-    public function getMedia(): string
+    public function getMedia(): ?string
     {
         return $this->media;
     }
