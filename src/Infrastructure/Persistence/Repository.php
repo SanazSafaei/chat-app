@@ -14,7 +14,7 @@ abstract class Repository
     private Logger $logger;
     protected DBInterface $db;
 
-    #[Inject (['DB' => DBInterface::class])]
+    #[Inject(['DB' => DBInterface::class])]
     public function __construct(DBInterface $DB)
     {
         $this->db = $DB;
@@ -66,9 +66,15 @@ abstract class Repository
             if ($this->shouldIgnoreField($fieldName, $fieldType)) {
                 continue;
             }
-            $query = $query . ' \'' . $values[$fieldName] . '\',';
+            if ($fieldType == 'TEXT') {
+                $query = $query . ' \'' . $values[$fieldName] . '\',';
+            } else {
+                $query = $query . ' ' . $values[$fieldName] . ' ,';
+            }
         }
+        $this->logger->log('info', $query);
         $query = rtrim($query, ",") . ' )';
+        $this->logger->log('info', $query);
 
         $result = $this->PDO->prepare($query);
         $execResult = $result->execute();

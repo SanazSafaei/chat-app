@@ -5,11 +5,13 @@ declare(strict_types=1);
 use App\Application\Settings\SettingsInterface;
 use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Domain\Objects\Group\GroupRepository;
+use App\Domain\Objects\Media\MediaRepository;
 use App\Domain\Objects\Message\MessageRepository;
 use App\Domain\Objects\User\UserRepository;
 use App\Infrastructure\Persistence\DB;
 use App\Infrastructure\Persistence\Group\InMemoryGroupMembersRepository;
 use App\Infrastructure\Persistence\Group\InMemoryGroupRepository;
+use App\Infrastructure\Persistence\Media\InMemoryMediaRepository;
 use App\Infrastructure\Persistence\Message\InMemoryMessageRepository;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
 use DI\ContainerBuilder;
@@ -43,6 +45,11 @@ return function (ContainerBuilder $containerBuilder) {
         GroupMemberRepository::class => \DI\factory(function (ContainerInterface $c) {
             $settings = $c->get(SettingsInterface::class);
             return new InMemoryGroupMembersRepository($settings->get('mode') == 'test' ? new FakeDB() : new DB());
+        }),
+
+        MediaRepository::class => \DI\factory(function (ContainerInterface $c) {
+            $settings = $c->get(SettingsInterface::class);
+            return new InMemoryMediaRepository($settings->get('mode') == 'test' ? new FakeDB() : new DB());
         }),
 
     ]);

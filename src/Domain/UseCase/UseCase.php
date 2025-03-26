@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Domain\UseCase;
+
 use App\Domain\DomainException\DomainException;
 use App\Domain\DomainException\InvalidInput;
 use Exception;
@@ -12,9 +13,9 @@ abstract class UseCase
         $this->validateData();
     }
 
-    public abstract function execute();
+    abstract public function execute();
 
-    protected abstract function validateData();
+    abstract protected function validateData();
 
     private function execInputValidations(): void
     {
@@ -27,5 +28,4 @@ abstract class UseCase
             throw new InvalidInput($exception->getMessage());
         }
     }
-
 }

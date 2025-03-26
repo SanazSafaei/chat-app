@@ -31,9 +31,9 @@ class SendMessage extends UseCase
             $this->messageData['from'],
             $this->messageData['to'],
             $this->messageData['type'],
-            $this->messageData['message'] ?? '',
-            $this->messageData['media'] ?? '',
-            $now
+            $now,
+            $this->messageData['message'] ?? null,
+            $this->messageData['media'] ?? null
         );
         $message = $this->messageRepository->insert($message);
 

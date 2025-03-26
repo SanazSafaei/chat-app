@@ -11,6 +11,8 @@ use App\Application\Actions\Group\ListGroupsAction;
 use App\Application\Actions\Group\RemoveGroupMembersAction;
 use App\Application\Actions\Group\ViewGroupAction;
 use App\Application\Actions\Group\ViewGroupMembersAction;
+use App\Application\Actions\Media\UploadMediaAction;
+use App\Application\Actions\Media\ViewMediaAction;
 use App\Application\Actions\Message\SendGroupMessageAction;
 use App\Application\Actions\Message\SendPrivateMessageAction;
 use App\Application\Actions\Message\ViewChatAction;
@@ -55,5 +57,10 @@ return function (App $app) {
         $group->delete('/{id}/members', RemoveGroupMembersAction::class); // remove group members
         $group->get('/{id}/messages', ViewGroupMessagesAction::class); // view groups messages
         $group->post('/{id}/messages', SendGroupMessageAction::class); // send message to group
+    });
+
+    $app->group('/media', function (Group $group) {
+        $group->get('/{id}', ViewMediaAction::class);
+        $group->post('/upload', UploadMediaAction::class);
     });
 };

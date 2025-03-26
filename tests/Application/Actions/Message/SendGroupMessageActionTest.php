@@ -31,7 +31,7 @@ class SendGroupMessageActionTest extends TestCase
         $container = $app->getContainer();
 
         $now = new DateTime();
-        $message = new Message(1, 1, 2, MessageRepository::TYPE_GROUP, 'New Group Message', '', $now);
+        $message = new Message(1, 1, 2, MessageRepository::TYPE_GROUP, $now, 'New Group Message', null);
 
         $token = JwtManager::encode(JwtManager::getPayload(1, 'username'));
         $request = $this->createRequest('POST', '/groups/2/messages')

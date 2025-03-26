@@ -24,8 +24,8 @@ class ViewChatActionTest extends TestCase
         $container = $app->getContainer();
 
         $messages = [
-            new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, 'Hello', '', new \DateTime()),
-            new Message(2, 2, 1, MessageRepository::TYPE_PRIVATE, 'Hi', '', new \DateTime())
+            new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, new \DateTime(), 'Hello', null),
+            new Message(2, 2, 1, MessageRepository::TYPE_PRIVATE, new \DateTime(), 'Hi', null)
         ];
 
         $messageRepositoryProphecy = $this->prophesize(MessageRepository::class);

@@ -15,8 +15,8 @@ class Message extends DomainObject implements JsonSerializable
     private int $from;
     private int $to;
     private string $messageType;
-    private string $message;
-    private string $media;
+    private ?string $message;
+    private ?string $media;
     private ?DateTime $createdAt;
 
     public function __construct(
@@ -24,9 +24,9 @@ class Message extends DomainObject implements JsonSerializable
         int $from,
         int $to,
         string $messageType,
-        string $message,
-        string $media,
-        ?DateTime $createdAt
+        ?DateTime $createdAt,
+        ?string $message,
+        ?string $media = ''
     ) {
         $this->id = $id;
         $this->from = $from;
@@ -71,12 +71,12 @@ class Message extends DomainObject implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'id' => $this->id,
-            'from_id' => $this->from,
-            'to_id' => $this->to,
-            'type' => $this->messageType,
-            'message' => $this->message,
-            'media' => $this->media,
+            'id' => $this->getId(),
+            'from_id' => $this->getFrom(),
+            'to_id' => $this->getTo(),
+            'type' => $this->getMessageType(),
+            'message' => $this->getMessage(),
+            'media' => $this->getMedia(),
             'created_at' => $this->createdAt?->format('Y-m-d H:i:s'),
         ];
     }
@@ -88,9 +88,9 @@ class Message extends DomainObject implements JsonSerializable
             $values['from_id'],
             $values['to_id'],
             $values['type'],
+            isset($values['created_at']) ? new DateTime($values['created_at']) : null,
             $values['message'],
-            $values['media'],
-            isset($values['created_at']) ? new DateTime($values['created_at']) : null
+            $values['media']
         );
     }
 }

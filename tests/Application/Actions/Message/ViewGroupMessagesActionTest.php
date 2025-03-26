@@ -26,8 +26,8 @@ class ViewGroupMessagesActionTest extends TestCase
 
         $now = new DateTime();
         $groupMessages = [
-            new Message(1, 1, 2, MessageRepository::TYPE_GROUP,'Message 1', '', $now),
-            new Message(2, 2, 2, MessageRepository::TYPE_GROUP, 'Message 2', '', $now)
+            new Message(1, 1, 2, MessageRepository::TYPE_GROUP, $now, 'Message 1', null),
+            new Message(2, 2, 2, MessageRepository::TYPE_GROUP, $now, 'Message 2', null)
         ];
 
         $groupMessageRepositoryProphecy = $this->prophesize(MessageRepository::class);

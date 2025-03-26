@@ -28,7 +28,7 @@ class SendPrivateMessageActionTest extends TestCase
 
         $now = new DateTime();
 
-        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, 'Hello', '', $now);
+        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, $now, 'Hello', null);
 
         $token = JwtManager::encode(JwtManager::getPayload(1, 'username'));
         $request = $this->createRequest('POST', '/users/2/messages')

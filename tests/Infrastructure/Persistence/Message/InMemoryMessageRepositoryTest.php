@@ -23,8 +23,8 @@ class InMemoryMessageRepositoryTest extends TestCase
     public function testFindAll()
     {
         $now = new \DateTime();
-        $message1 = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE,'Hello World', '', $now);
-        $message2 = new Message(2, 2, 1, MessageRepository::TYPE_PRIVATE,'How are you?', '', $now);
+        $message1 = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, $now, 'Hello World', null);
+        $message2 = new Message(2, 2, 1, MessageRepository::TYPE_PRIVATE, $now, 'How are you?', null);
 
         $repository = new InMemoryMessageRepository(new FakeDB());
 
@@ -38,7 +38,7 @@ class InMemoryMessageRepositoryTest extends TestCase
     public function testFindMessageFromToId()
     {
         $now = new \DateTime('2025-03-22T10:01:04');
-        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE,'Hello World', '', $now);
+        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, $now, 'Hello World', null);
 
         $repository = new InMemoryMessageRepository(new FakeDB());
         $repository->insert($message);
@@ -52,7 +52,7 @@ class InMemoryMessageRepositoryTest extends TestCase
         $repository = new InMemoryMessageRepository(new FakeDB());
 
         $now = new \DateTime();
-        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE,'Hello World', '', $now);
+        $message = new Message(1, 1, 2, MessageRepository::TYPE_PRIVATE, $now, 'Hello World', null);
         $insertedMessage = $repository->insert($message);
 
         $this->assertNotNull($insertedMessage->getId());

@@ -28,9 +28,9 @@ class InMemoryUserRepository extends Repository implements UserRepository
             'last_name' => 'TEXT',
             'email' => 'TEXT',
             'photo' => 'TEXT',
-            'last_seen' => 'datetime',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime'
+            'last_seen' => 'TEXT',
+            'created_at' => 'TEXT',
+            'updated_at' => 'TEXT'
         ];
     }
 

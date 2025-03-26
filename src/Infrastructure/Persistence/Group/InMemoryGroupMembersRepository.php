@@ -25,8 +25,8 @@ class InMemoryGroupMembersRepository extends Repository implements GroupMemberRe
     {
         return [
             'id' => 'INTEGER PRIMARY KEY AUTOINCREMENT',
-            'group_id' => 'INT',
-            'user_id' => 'INT',
+            'group_id' => 'INTEGER',
+            'user_id' => 'INTEGER',
             'role' => 'TEXT',
         ];
     }
