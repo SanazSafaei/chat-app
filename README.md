@@ -19,6 +19,7 @@ This is not the final version of the application. To ensure better performance a
 - **Use a more robust ORM**: Switching to **Doctrine** for better database management.
 - **Admin Panel**: Add an admin panel for managing users and handling reported users.
 - **Notifications**: Implement notification routes and real-time user notifications.
+- **More Tests**: Write more unit and integrate test for uncovered scenarios.
 
 ## Database Schemas and Routes
 An Overview of db schemas and routes and todo lists for expanding project:
