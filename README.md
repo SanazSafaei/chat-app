@@ -14,7 +14,7 @@ This is not the final version of the application. To ensure better performance a
 - **Real-time Communication**: Replacing HTTP-based messaging with **WebSockets** for a seamless chat experience.
 - **Cloud Storage**: Storing media files on **AWS S3** for better scalability.
 - **Reliable Database**: Utilizing **MySQL** instead of the default database.
-- **API Caching**: Implementing caching mechanisms to improve response times.
+- **API Caching**: Enhance caching mechanisms using Memcache or Redis and implement caching on response objects to improve response times.
 - **Database Optimization**: Adding indexing to frequently accessed tables, such as `messages` and `users`, to enhance query performance.
 - **Use a more robust ORM**: Switching to **Doctrine** for better database management.
 - **Admin Panel**: Add an admin panel for managing users and handling reported users.
@@ -23,7 +23,7 @@ This is not the final version of the application. To ensure better performance a
 
 ## Database Schemas and Routes
 An Overview of db schemas and routes and todo lists for expanding project:
-![Chat Application Logo](ReadMeContent/chat-application-diagram.png)
+![Chat Application Logo](ReadMeContent/chat-app-diagram.png)
 
 ## Postman Collection
  You can load Postman Collection of application result with this file:
