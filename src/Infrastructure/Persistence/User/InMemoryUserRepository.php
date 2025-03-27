@@ -9,12 +9,11 @@ use App\Domain\Objects\User\UserNotFoundException;
 use App\Domain\Objects\User\UserRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class InMemoryUserRepository extends Repository implements UserRepository
 {
-    const string CACHE_ID = 'user_';
-    const string CACHE_USERNAME = 'user_username_';
+    public const string CACHE_ID = 'user_';
+    public const string CACHE_USERNAME = 'user_username_';
     public function __construct(DBInterface $DB)
     {
         parent::__construct($DB);

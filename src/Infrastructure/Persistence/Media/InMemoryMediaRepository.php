@@ -8,13 +8,11 @@ use App\Domain\Objects\Media\Media;
 use App\Domain\Objects\Media\MediaRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Psr\Log\LoggerInterface;
 use DI\NotFoundException;
 
 class InMemoryMediaRepository extends Repository implements MediaRepository
 {
-    const string CACHE_ID = 'media_';
+    public const string CACHE_ID = 'media_';
     public const int CACHE_TTL = 60 * 60; // 1 hour cache
 
     public function __construct(DBInterface $DB)

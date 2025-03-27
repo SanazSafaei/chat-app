@@ -8,8 +8,6 @@ use App\Domain\Objects\Group\Group;
 use App\Domain\Objects\Group\GroupRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Psr\Log\LoggerInterface;
 use DI\NotFoundException;
 use PDO;
 

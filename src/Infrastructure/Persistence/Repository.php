@@ -2,13 +2,13 @@
 
 namespace App\Infrastructure\Persistence;
 
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Psr\Cache\InvalidArgumentException;
 use App\Domain\Objects\DomainObject;
 use DI\Attribute\Inject;
+use Slim\Logger;
 use Exception;
 use PDO;
-use Psr\Cache\InvalidArgumentException;
-use Slim\Logger;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 abstract class Repository
 {
@@ -117,13 +117,12 @@ abstract class Repository
         $cache = new FilesystemAdapter();
         $cacheKeys = $this->getCacheKeys();
         if (isset($cacheKeys[$field])) {
-            $fullNameCacheKey = $cacheKeys[$field]. $value;
+            $fullNameCacheKey = $cacheKeys[$field] . $value;
             try {
                 $cache->deleteItem($fullNameCacheKey);
                 $cache->delete($fullNameCacheKey);
                 $this->logger->log('info', "Cache of $field with $value deleted.");
             } catch (InvalidArgumentException $exception) {
-
             }
         }
     }

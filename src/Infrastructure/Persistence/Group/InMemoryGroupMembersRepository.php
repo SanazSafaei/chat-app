@@ -11,14 +11,12 @@ use App\Domain\Objects\Group\GroupMemberRepository;
 use App\Infrastructure\Persistence\DBInterface;
 use App\Infrastructure\Persistence\Repository;
 use App\Infrastructure\Persistence\User\InMemoryUserRepository;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Psr\Log\LoggerInterface;
 use PDO;
 
 class InMemoryGroupMembersRepository extends Repository implements GroupMemberRepository
 {
-    const string CACHE_GROUP_ID = 'group_members_';
-    const string CACHE_USER_ID = 'user_groups_';
+    public const string CACHE_GROUP_ID = 'group_members_';
+    public const string CACHE_USER_ID = 'user_groups_';
 
     public function __construct(DBInterface $DB,)
     {
